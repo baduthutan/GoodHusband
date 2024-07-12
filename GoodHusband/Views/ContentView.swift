@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var weatherViewModel = WeatherViewModel()
+    @StateObject private var mapViewModel = MapViewModel()
     
     var body: some View {
-        WeatherView()
+        MapView(mapViewModel: mapViewModel, weatherViewModel: weatherViewModel)
     }
 }
 
