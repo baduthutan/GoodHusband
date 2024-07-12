@@ -7,9 +7,12 @@
 
 import Foundation
 
-struct Weather: Identifiable {
-    let id = UUID()
-    let temperature: Double
-    let condition: String
+struct WeatherModel {
+    var date: Date
+    var weatherCondition: String
+    var conditionSymbolName: String
+    var temperature: Int
+    var rainChance: Int
+    var uvIndex: Int
+    var humidity: Int
 }
-
