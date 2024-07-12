@@ -18,6 +18,8 @@
 		1A30D5352C3D2BF800059D5F /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30D5292C3D2BF800059D5F /* Weather.swift */; };
 		1A30D5382C3D2C2C00059D5F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1A30D5372C3D2C2C00059D5F /* README.md */; };
 		1A30D53B2C40EDB800059D5F /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 1A30D53A2C40EDB800059D5F /* .gitignore */; };
+		D017725F2C3FD28B00F077FE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D017725E2C3FD28B00F077FE /* MapView.swift */; };
+		D01772612C3FDAD900F077FE /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01772602C3FDAD900F077FE /* MapViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		1A30D5292C3D2BF800059D5F /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		1A30D5372C3D2C2C00059D5F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1A30D53A2C40EDB800059D5F /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		D017725E2C3FD28B00F077FE /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		D01772602C3FDAD900F077FE /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,7 @@
 			children = (
 				1A30D51F2C3D2BF800059D5F /* WeatherView.swift */,
 				1A30D5202C3D2BF800059D5F /* ContentView.swift */,
+				D017725E2C3FD28B00F077FE /* MapView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -100,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				1A30D5222C3D2BF800059D5F /* WeatherViewModel.swift */,
+				D01772602C3FDAD900F077FE /* MapViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -201,12 +207,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A30D5332C3D2BF800059D5F /* WeatherService.swift in Sources */,
+				D017725F2C3FD28B00F077FE /* MapView.swift in Sources */,
 				1A30D5342C3D2BF800059D5F /* LocationManager.swift in Sources */,
 				1A30D5352C3D2BF800059D5F /* Weather.swift in Sources */,
 				1A30D5302C3D2BF800059D5F /* ContentView.swift in Sources */,
 				1A30D52F2C3D2BF800059D5F /* WeatherView.swift in Sources */,
 				1A30D5312C3D2BF800059D5F /* WeatherViewModel.swift in Sources */,
 				1A30D50D2C3D2AAA00059D5F /* GoodHusbandApp.swift in Sources */,
+				D01772612C3FDAD900F077FE /* MapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,9 +348,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GoodHusband/Preview Content\"";
-				DEVELOPMENT_TEAM = 6NVYJU48V6;
+				DEVELOPMENT_TEAM = H84M48MBJL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -369,9 +380,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GoodHusband/Preview Content\"";
-				DEVELOPMENT_TEAM = 6NVYJU48V6;
+				DEVELOPMENT_TEAM = H84M48MBJL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
