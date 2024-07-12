@@ -6,27 +6,45 @@
 //
 
 import Foundation
-import Combine
+import WeatherKit
+import CoreLocation
 
 class WeatherViewModel: ObservableObject {
-    @Published var weather: Weather?
-    private var weatherService: WeatherServiceProtocol
+    @Published var weatherModel: WeatherModel?
+    @Published var weatherForecasts: [WeatherModel] = []
     
-    init(weatherService: WeatherServiceProtocol = WeatherService()) {
-        self.weatherService = weatherService
-    }
+    private var weatherManager = WeatherManager()
+    private var locationManager = LocationManager()
     
     func fetchWeather() {
-        weatherService.fetchWeather { [weak self] result in
-            switch result {
-            case .success(let weather):
-                DispatchQueue.main.async {
-                    self?.weather = weather
+        Task {
+            do {
+                if let location = locationManager.location {
+                    let weatherModel = try await weatherManager.fetchWeather(location: location)
+                    DispatchQueue.main.async {
+                        self.weatherModel = weatherModel
+                    }
                 }
-            case .failure(let error):
-                print(error.localizedDescription)
+            } catch {
+                print("Failed to get weather data. \(error)")
+            }
+        }
+    }
+    
+    func fetchDailyForecast() {
+        Task {
+            do {
+                if let location = locationManager.location {
+                    let weatherForecast = try await weatherManager.fetchWeatherForecast(location: location)
+                    DispatchQueue.main.async {
+                        self.weatherForecasts = weatherForecast
+                    }
+                }
+            } catch {
+                print("Failed to get weather data. \(error)")
             }
         }
     }
 }
+
 
