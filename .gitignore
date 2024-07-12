@@ -9,7 +9,6 @@ xcuserdata/
 Packages/
 Package.pins
 Package.resolved
-*Xcodeproj
 
 # Xcode automatically generates this directory with a •Xworkspasedata file and xcuserdata
 # hence it is not needed unless you have added a package configuration file to your project
