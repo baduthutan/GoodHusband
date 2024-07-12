@@ -17,6 +17,7 @@
 		1A30D5342C3D2BF800059D5F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30D5272C3D2BF800059D5F /* LocationManager.swift */; };
 		1A30D5352C3D2BF800059D5F /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30D5292C3D2BF800059D5F /* Weather.swift */; };
 		1A30D5382C3D2C2C00059D5F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1A30D5372C3D2C2C00059D5F /* README.md */; };
+		57783F0F2C3FD7FA0075455C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 57783F0E2C3FD7FA0075455C /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		1A30D5272C3D2BF800059D5F /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		1A30D5292C3D2BF800059D5F /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		1A30D5372C3D2C2C00059D5F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		57783F0E2C3FD7FA0075455C /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +49,7 @@
 		1A30D5002C3D2AAA00059D5F = {
 			isa = PBXGroup;
 			children = (
+				57783F0D2C3FD55E0075455C /* Resources */,
 				1A30D5372C3D2C2C00059D5F /* README.md */,
 				1A30D50B2C3D2AAA00059D5F /* GoodHusband */,
 				1A30D50A2C3D2AAA00059D5F /* Products */,
@@ -125,6 +128,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		57783F0D2C3FD55E0075455C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				57783F0E2C3FD7FA0075455C /* Localizable.xcstrings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -167,6 +178,7 @@
 			knownRegions = (
 				en,
 				Base,
+				id,
 			);
 			mainGroup = 1A30D5002C3D2AAA00059D5F;
 			productRefGroup = 1A30D50A2C3D2AAA00059D5F /* Products */;
@@ -185,6 +197,7 @@
 			files = (
 				1A30D5382C3D2C2C00059D5F /* README.md in Resources */,
 				1A30D5142C3D2AAC00059D5F /* Preview Assets.xcassets in Resources */,
+				57783F0F2C3FD7FA0075455C /* Localizable.xcstrings in Resources */,
 				1A30D5112C3D2AAC00059D5F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,9 +349,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GoodHusband/Preview Content\"";
-				DEVELOPMENT_TEAM = 6NVYJU48V6;
+				DEVELOPMENT_TEAM = T7VZ3G3TGC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GoodHusband/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -365,9 +379,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GoodHusband/Preview Content\"";
-				DEVELOPMENT_TEAM = 6NVYJU48V6;
+				DEVELOPMENT_TEAM = T7VZ3G3TGC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GoodHusband/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
