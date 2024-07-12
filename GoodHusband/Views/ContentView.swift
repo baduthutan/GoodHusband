@@ -8,16 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var weatherViewModel = WeatherViewModel()
     
     var body: some View {
-        NavigationView {
-            WeatherView(weather: weatherViewModel.weather)
-                .onAppear {
-                    weatherViewModel.fetchWeather()
-                }
-                .navigationTitle("Weather App")
-        }
+        WeatherView()
     }
 }
 
