@@ -8,20 +8,31 @@
 import SwiftUI
 
 struct WeatherView: View {
-    var weather: Weather?
+    @StateObject private var weatherViewModel = WeatherViewModel()
     
     var body: some View {
-        VStack {
-            if let weather = weather {
-                Text("Temperature: \(weather.temperature)°C")
-                Text("Condition: \(weather.condition)")
+        VStack(spacing: 12) {
+            if let weatherModel = weatherViewModel.weatherModel {
+                Image(systemName: weatherModel.conditionSymbolName)
+                    .font(.largeTitle)
+                    .shadow(radius: 2)
+                    .padding()
+                Text("\(weatherModel.weatherCondition)")
+                Text("Chance of rain: \(weatherModel.rainChance)%")
+                Text("Temperature: \(weatherModel.temperature) C")
+                Text("Humidity: \(weatherModel.humidity)%")
             } else {
-                Text("Loading...")
+                Text("failed to fetch data")
             }
         }
+        .onAppear {
+            Task {
+                weatherViewModel.fetchWeather()
+            }
+        }
+        .font(.title3)
     }
 }
-
 
 #Preview {
     WeatherView()
