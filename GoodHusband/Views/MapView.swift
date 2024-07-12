@@ -11,52 +11,17 @@ import CoreLocation
 import MapKit
 
 struct MapView: View {
-    @State private var getDirections = false
     @State var mapSelection: MKMapItem?
-    @State var cameraPosition: MapCameraPosition = .region(.userRegion)
+    @State var isMapSelected: Bool = false
     @State private var showSearchResults = false
 
     @ObservedObject var mapViewModel: MapViewModel
+    @ObservedObject var weatherViewModel: WeatherViewModel
 
     var body: some View {
         ZStack {
-            if showSearchResults {
-                List(mapViewModel.results, id: \.self) { item in
-                    Button(action: {
-                        mapSelection = item
-                        showSearchResults = false
-                        zoomToFitUserAndSelectedItem()
-                    }) {
-                        VStack(alignment: .leading) {
-                            Text(item.placemark.name ?? "Unknown Place")
-                                .font(.headline)
-                            Text(item.placemark.title ?? "No address available")
-                                .font(.subheadline)
-                            Text("Lat: \(item.placemark.coordinate.latitude), Lon: \(item.placemark.coordinate.longitude)")
-                                .font(.caption)
-                        }
-                    }
-                }
-            } else {
-                Map(position: $cameraPosition, selection: $mapSelection) {
-                    Annotation("My Location", coordinate: .userLocation) {
-                        MapAnnotationView()
-                    }
-                    ForEach(mapViewModel.results, id: \.self) { item in
-                        if mapViewModel.routeDisplaying {
-                            if item == mapViewModel.routeDestination {
-                                let placemark = item.placemark
-                                Marker(placemark.name ?? "", coordinate: placemark.coordinate)
-                            }
-                        } else {
-                            let placemark = item.placemark
-                            Marker(placemark.name ?? "", coordinate: placemark.coordinate)
-                        }
-                    }
-                }
-                .overlay(alignment: .top) {
-                    MapSearchOverlayView(searchText: $mapViewModel.searchText)
-                }
+            VStack(content: {
+                MapSearchOverlayView(searchText: $mapViewModel.searchText)
                 .onSubmit(of: .text) {
                     Task {
                         await mapViewModel.searchPlaces()
@@ -66,24 +31,27 @@ struct MapView: View {
                 .onChange(of: mapSelection, { oldValue, newValue in
                     mapViewModel.showDetails = newValue != nil
                 })
-                .mapControls {
-                    MapCompass()
-                    MapPitchToggle()
-                    MapUserLocationButton()
+                Spacer()
+                if showSearchResults {
+                    List(mapViewModel.results, id: \.self) { item in
+                        Button(action: {
+                            mapSelection = item
+                            showSearchResults = false
+                            isMapSelected = true
+                        }) {
+                            VStack(alignment: .leading) {
+                                Text(item.placemark.name ?? "Unknown Place")
+                                    .font(.headline)
+                                Text(item.placemark.title ?? "No address available")
+                                    .font(.caption)
+                            }
+                        }
+                    }
                 }
-            }
-        }
-    }
-
-    private func zoomToFitUserAndSelectedItem() {
-        guard let userLocation = mapViewModel.userLocation?.coordinate,
-              let selectedItem = mapSelection?.placemark.coordinate else { return }
-
-        let mapRect = MKMapRect(coordinates: [userLocation, selectedItem])
-        let mapRegion = MKCoordinateRegion(mapRect)
-        
-        withAnimation {
-            cameraPosition = .region(mapRegion)
+            })
+            .sheet(isPresented: $isMapSelected, content: {
+                WeatherView()
+            })
         }
     }
 }
