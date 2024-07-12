@@ -5,31 +5,42 @@
 //  Created by vin chen on 09/07/24.
 //
 
-import Foundation
+import SwiftUI
 import CoreLocation
+import WeatherKit
 
-class LocationManager: NSObject, CLLocationManagerDelegate {
+class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private let manager = CLLocationManager()
-    private var locationHandler: ((CLLocation?) -> Void)?
-    
+    @Published var location: CLLocation?
+
     override init() {
         super.init()
         manager.delegate = self
         manager.requestWhenInUseAuthorization()
     }
     
-    func requestLocation(completion: @escaping (CLLocation?) -> Void) {
-        locationHandler = completion
+    func startUpdatingLocation() {
+        manager.startUpdatingLocation()
+    }
+    
+    func requestLocation(completion: @escaping (Result<CLLocation, Error>) -> Void) {
         manager.requestLocation()
+        
+        let _ = $location
+            .compactMap { $0 }
+            .sink { location in
+                completion(.success(location))
+            }
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        locationHandler?(locations.first)
+        if let location = locations.last {
+            self.location = location
+            manager.stopUpdatingLocation()
+        }
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        locationHandler?(nil)
+        print("Failed to find user's location: \(error.localizedDescription)")
     }
 }
-
-
