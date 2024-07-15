@@ -21,6 +21,7 @@
 		1A30D5402C423C9C00059D5F /* FavoriteDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30D53F2C423C9C00059D5F /* FavoriteDestinationView.swift */; };
 		1A30D5442C423D0200059D5F /* LocationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30D5432C423D0200059D5F /* LocationHeaderView.swift */; };
 		2645E58D2C41103600540DC3 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2645E58C2C41103600540DC3 /* WeatherManager.swift */; };
+		5791F35D2C452F9100DAFE1F /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 5791F35C2C452F9100DAFE1F /* .gitkeep */; };
 		D017725F2C3FD28B00F077FE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D017725E2C3FD28B00F077FE /* MapView.swift */; };
 		D01772612C3FDAD900F077FE /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01772602C3FDAD900F077FE /* MapViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -41,6 +42,7 @@
 		1A30D53F2C423C9C00059D5F /* FavoriteDestinationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDestinationView.swift; sourceTree = "<group>"; };
 		1A30D5432C423D0200059D5F /* LocationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHeaderView.swift; sourceTree = "<group>"; };
 		2645E58C2C41103600540DC3 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
+		5791F35C2C452F9100DAFE1F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		D017725E2C3FD28B00F077FE /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D01772602C3FDAD900F077FE /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,6 +101,7 @@
 		1A30D51E2C3D2BF800059D5F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5791F35B2C452F6800DAFE1F /* Components */,
 				1A30D5492C443D2B00059D5F /* MainView */,
 				1A30D51F2C3D2BF800059D5F /* WeatherView.swift */,
 				1A30D5202C3D2BF800059D5F /* ContentView.swift */,
@@ -147,6 +150,14 @@
 			children = (
 				1A30D5432C423D0200059D5F /* LocationHeaderView.swift */,
 				1A30D53F2C423C9C00059D5F /* FavoriteDestinationView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		5791F35B2C452F6800DAFE1F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5791F35C2C452F9100DAFE1F /* .gitkeep */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -211,6 +222,7 @@
 			files = (
 				1A30D53B2C40EDB800059D5F /* .gitignore in Resources */,
 				1A30D5382C3D2C2C00059D5F /* README.md in Resources */,
+				5791F35D2C452F9100DAFE1F /* .gitkeep in Resources */,
 				1A30D5142C3D2AAC00059D5F /* Preview Assets.xcassets in Resources */,
 				1A30D5112C3D2AAC00059D5F /* Assets.xcassets in Resources */,
 			);
