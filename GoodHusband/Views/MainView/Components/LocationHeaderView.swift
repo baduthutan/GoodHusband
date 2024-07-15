@@ -42,7 +42,6 @@ struct LocationHeaderView: View {
                 }
         }
         .edgesIgnoringSafeArea(.top)
-//        .frame(height: geometry.safeAreaInsets.top + 180)
         .frame(height: 180)
     }
 }

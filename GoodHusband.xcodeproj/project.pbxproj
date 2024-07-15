@@ -137,18 +137,18 @@
 			isa = PBXGroup;
 			children = (
 				1A30D53D2C423B7100059D5F /* MainView.swift */,
-				1A30D54A2C443D5800059D5F /* MainViewSections */,
+				1A30D54A2C443D5800059D5F /* Components */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
 		};
-		1A30D54A2C443D5800059D5F /* MainViewSections */ = {
+		1A30D54A2C443D5800059D5F /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				1A30D5432C423D0200059D5F /* LocationHeaderView.swift */,
 				1A30D53F2C423C9C00059D5F /* FavoriteDestinationView.swift */,
 			);
-			path = MainViewSections;
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
