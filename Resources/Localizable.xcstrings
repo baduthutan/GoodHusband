@@ -1,0 +1,369 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Avoid thick clothes." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hindari pakaian tebal."
+          }
+        }
+      }
+    },
+    "Back" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kembali"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Batal"
+          }
+        }
+      }
+    },
+    "Connection Lost" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koneksi Terputus"
+          }
+        }
+      }
+    },
+    "CURRENT LOCATION" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LOKASI SAAT INI"
+          }
+        }
+      }
+    },
+    "Don’t forget you sunscreen!" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jangan lupa sunscreen Kamu!"
+          }
+        }
+      }
+    },
+    "failed to fetch data" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "gagal mengambil data"
+          }
+        }
+      }
+    },
+    "Favourite destination" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Destinasi favorit"
+          }
+        }
+      }
+    },
+    "Fri" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jum"
+          }
+        }
+      }
+    },
+    "Get an umbrella if you need to." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bawa payungmu jika memungkinkan."
+          }
+        }
+      }
+    },
+    "Home" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beranda"
+          }
+        }
+      }
+    },
+    "In 29° heat, maybe it’s a good idea to have an umbrella with you to avoid direct sunlight." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dalam panas 29°, mungkin sebaiknya bawa payung untuk menghindari sinar matahari langsung."
+          }
+        }
+      }
+    },
+    "It doesn’t seem like going to rain there today." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sepertinya di sana tidak akan hujan hari ini."
+          }
+        }
+      }
+    },
+    "It seems like it’s gonna rain." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sepertinya akan turun hujan."
+          }
+        }
+      }
+    },
+    "It’s raining outside." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Di luar sedang hujan."
+          }
+        }
+      }
+    },
+    "It’s Sunny all day!" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerah sepanjang hari!"
+          }
+        }
+      }
+    },
+    "Low humidity and high temperature is perfect to dry your clothes." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kelembaban rendah dan suhu tinggi, waktu yang tepat mengeringkan pakaian Kamu."
+          }
+        }
+      }
+    },
+    "Make sure to allow Sunny Set Up to access your location or try another searching for another location." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pastikan untuk mengizinkan Sunny Set Up mengakses lokasi Kamu atau coba cari lokasi lain."
+          }
+        }
+      }
+    },
+    "No Results" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tidak ada hasil"
+          }
+        }
+      }
+    },
+    "Pin This Information to Homepage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pin Informasi Ini di Beranda"
+          }
+        }
+      }
+    },
+    "Please check your connection to continue." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Silakan periksa koneksi Kamu untuk melanjutkan."
+          }
+        }
+      }
+    },
+    "Sat" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sab"
+          }
+        }
+      }
+    },
+    "Search Location" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cari Lokasi"
+          }
+        }
+      }
+    },
+    "Search Other Location" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cari Lokasi Lain"
+          }
+        }
+      }
+    },
+    "Set up a location to see how’s there." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atur lokasi untuk melihat cuaca."
+          }
+        }
+      }
+    },
+    "The temperature is reaching 29°. Stay comfortable by wearing outfit that easily absorbs sweat and avoid dressing in layers." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suhu mencapai 29°. Disarankan untuk mengenakan pakaian yang mudah menyerap keringat dan hindari pakaian berlapis."
+          }
+        }
+      }
+    },
+    "The UV Index is currently high. Use sunscreen and re-apply every 4 hours." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indeks UV saat ini tinggi. Gunakan tabir surya dan oleskan kembali setiap 4 jam."
+          }
+        }
+      }
+    },
+    "Thu" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kam"
+          }
+        }
+      }
+    },
+    "Time for doing laundry!" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waktunya mencuci pakaian!"
+          }
+        }
+      }
+    },
+    "Today" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hari ini"
+          }
+        }
+      }
+    },
+    "Tue" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sel"
+          }
+        }
+      }
+    },
+    "Unpin" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lepas Pin"
+          }
+        }
+      }
+    },
+    "Wed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rab"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
