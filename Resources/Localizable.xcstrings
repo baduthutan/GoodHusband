@@ -1,22 +1,120 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Avoid thick clothes." : {
+      "extractionState" : "manual"
+    },
+    "Back" : {
+      "extractionState" : "manual"
+    },
+    "Cancel" : {
+      "extractionState" : "manual"
+    },
+    "Connection Lost" : {
+      "extractionState" : "manual"
+    },
+    "CURRENT LOCATION" : {
+      "extractionState" : "manual"
+    },
+    "Don’t forget you sunscreen!" : {
+      "extractionState" : "manual"
+    },
+    "failed to fetch data" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "gagal mengambil data"
+          }
+        }
+      }
+    },
+    "Favourite destination" : {
+      "extractionState" : "manual"
+    },
+    "Fri" : {
+      "extractionState" : "manual"
+    },
+    "Get an umbrella if you need to." : {
+      "extractionState" : "manual"
+    },
+    "Home" : {
+      "extractionState" : "manual"
+    },
+    "In 29° heat, maybe it’s a good idea to have an umbrella with you to avoid direct sunlight." : {
+      "extractionState" : "manual"
+    },
+    "It doesn’t seem like going to rain there today." : {
+      "extractionState" : "manual"
+    },
     "It seems like it’s gonna rain." : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "It seems like it’s gonna rain."
-          }
-        },
         "id" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Sepertinya akan turun hujan."
           }
         }
       }
+    },
+    "It’s raining outside." : {
+      "extractionState" : "manual"
+    },
+    "It’s Sunny all day!" : {
+      "extractionState" : "manual"
+    },
+    "Low humidity and high temperature is perfect to dry your clothes." : {
+      "extractionState" : "manual"
+    },
+    "Make sure to allow Sunny Set Up to access your location or try another searching for another location." : {
+      "extractionState" : "manual"
+    },
+    "No Results" : {
+      "extractionState" : "manual"
+    },
+    "Pin This Information to Homepage" : {
+      "extractionState" : "manual"
+    },
+    "Please check your connection to continue." : {
+      "extractionState" : "manual"
+    },
+    "Sat" : {
+      "extractionState" : "manual"
+    },
+    "Search Location" : {
+      "extractionState" : "manual"
+    },
+    "Search Other Location" : {
+      "extractionState" : "manual"
+    },
+    "Set up a location to see how’s there." : {
+      "extractionState" : "manual"
+    },
+    "The temperature is reaching 29°. Stay comfortable by wearing outfit that easily absorbs sweat and avoid dressing in layers." : {
+      "extractionState" : "manual"
+    },
+    "The UV Index is currently high. Use sunscreen and re-apply every 4 hours." : {
+      "extractionState" : "manual"
+    },
+    "Thu" : {
+      "extractionState" : "manual"
+    },
+    "Time for doing laundry!" : {
+      "extractionState" : "manual"
+    },
+    "Today" : {
+      "extractionState" : "manual"
+    },
+    "Tue" : {
+      "extractionState" : "manual"
+    },
+    "Unpin" : {
+      "extractionState" : "manual"
+    },
+    "Wed" : {
+      "extractionState" : "manual"
     }
   },
   "version" : "1.0"

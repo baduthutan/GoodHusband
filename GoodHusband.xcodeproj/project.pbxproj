@@ -16,9 +16,9 @@
 		1A30D5342C3D2BF800059D5F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30D5272C3D2BF800059D5F /* LocationManager.swift */; };
 		1A30D5352C3D2BF800059D5F /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30D5292C3D2BF800059D5F /* Weather.swift */; };
 		1A30D5382C3D2C2C00059D5F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1A30D5372C3D2C2C00059D5F /* README.md */; };
-		57783F0F2C3FD7FA0075455C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 57783F0E2C3FD7FA0075455C /* Localizable.xcstrings */; };
 		1A30D53B2C40EDB800059D5F /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 1A30D53A2C40EDB800059D5F /* .gitignore */; };
 		2645E58D2C41103600540DC3 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2645E58C2C41103600540DC3 /* WeatherManager.swift */; };
+		57783F0F2C3FD7FA0075455C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 57783F0E2C3FD7FA0075455C /* Localizable.xcstrings */; };
 		D017725F2C3FD28B00F077FE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D017725E2C3FD28B00F077FE /* MapView.swift */; };
 		D01772612C3FDAD900F077FE /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01772602C3FDAD900F077FE /* MapViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -34,9 +34,9 @@
 		1A30D5272C3D2BF800059D5F /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationManager.swift; path = ../Utilities/LocationManager.swift; sourceTree = "<group>"; };
 		1A30D5292C3D2BF800059D5F /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		1A30D5372C3D2C2C00059D5F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		57783F0E2C3FD7FA0075455C /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		1A30D53A2C40EDB800059D5F /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		2645E58C2C41103600540DC3 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
+		57783F0E2C3FD7FA0075455C /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		D017725E2C3FD28B00F077FE /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D01772602C3FDAD900F077FE /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
