@@ -15,8 +15,8 @@ struct MapView: View {
     @State var isMapSelected: Bool = false
     @State private var showSearchResults = false
 
-    @ObservedObject var mapViewModel: MapViewModel
-    @ObservedObject var weatherViewModel: WeatherViewModel
+    @ObservedObject var mapViewModel = MapViewModel.singleton
+    @ObservedObject var weatherViewModel = WeatherViewModel.singleton
 
     var body: some View {
         ZStack {
@@ -50,7 +50,7 @@ struct MapView: View {
                 }
             })
             .sheet(isPresented: $isMapSelected, content: {
-                WeatherView()
+                
             })
         }
     }
