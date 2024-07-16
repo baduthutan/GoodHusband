@@ -17,22 +17,20 @@ struct RecommendationView: View {
             Image(imageName)
                 .resizable()
                 .frame(width: 60, height: 60)
-                .cornerRadius(8)
+                .cornerRadius(.infinity)
                 .padding(.trailing, 8)
             
             VStack(alignment: .leading) {
                 Text(title)
-                    .font(.headline)
+                    .font(.callout)
                     .bold()
                 
                 Text(description)
-                    .font(.subheadline)
+                    .font(.caption)
                     .foregroundColor(.gray)
             }
             Spacer()
         }
-        .padding()
-        .cornerRadius(12)
     }
 }
 
