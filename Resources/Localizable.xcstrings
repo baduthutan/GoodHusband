@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%lld°" : {
+
+    },
     "Avoid thick clothes." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -33,6 +36,9 @@
           }
         }
       }
+    },
+    "Click to see 7-day forecast" : {
+
     },
     "Connection Lost" : {
       "extractionState" : "manual",
@@ -210,6 +216,9 @@
         }
       }
     },
+    "overall forecast in %@" : {
+
+    },
     "Pin This Information to Homepage" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -243,6 +252,9 @@
         }
       }
     },
+    "Search for a location..." : {
+
+    },
     "Search Location" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -275,6 +287,9 @@
           }
         }
       }
+    },
+    "Showers expected at 6PM." : {
+
     },
     "The temperature is reaching 29°. Stay comfortable by wearing outfit that easily absorbs sweat and avoid dressing in layers." : {
       "extractionState" : "manual",
