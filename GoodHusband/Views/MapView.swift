@@ -90,8 +90,9 @@ struct MapSearchOverlayView: View {
             .font(.subheadline)
             .padding(12)
             .background(Color.white)
+            .cornerRadius(4)
             .padding()
-            .shadow(radius: 10)
+            .shadow(color: .gray, radius: 2)
     }
 }
 

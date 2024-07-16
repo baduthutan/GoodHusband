@@ -10,42 +10,51 @@ import SwiftUI
 struct LocationHeaderView: View {
     var location: String
     var weatherDescription: String
-
+    
     var body: some View {
-        GeometryReader { geometry in
-            VStack{
-                    ZStack {
-                        Color.sunnyBlue
-                            
-                        Image(.sunnyIllustration)
-                            .resizable()
-                            .frame(width: geometry.size.width, alignment: .center)
-                            .aspectRatio(contentMode: .fit)
-                        VStack(alignment: .leading, spacing: 8){
-                            Text(location)
-                                .font(.headline)
-                                .foregroundColor(.primary)
-                            Text(weatherDescription)
-                                .font(.title)
-                                .bold()
-                                .foregroundColor(.primary)
-                            Text("Set up a location to see how’s there.")
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
-                        }
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 24)
-                        .frame(width: geometry.size.width, alignment: .leading)
+        VStack {
+            ZStack(alignment:.bottom) {
+                Rectangle()
+                    .fill(.sunnyBlue)
+                Image(.sunnyHeader)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .padding(.bottom, 12)
+                HStack{
+                    VStack(alignment: .leading, spacing: 8){
+                        Text(location)
+                            .font(.headline)
+                            .foregroundColor(.primary)
+                        Text(weatherDescription)
+                            .font(.title)
+                            .bold()
+                            .foregroundColor(.primary)
+                        Text("Set up a location to see how’s there.")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
                     }
-                    .frame(height: 180)
-                    
+                    .padding(.bottom, 10)
+                    Spacer()
                 }
+                .padding(.horizontal, 12)
+                .padding(.vertical, 36)
+                Rectangle()
+                    .fill(
+                        LinearGradient(gradient: Gradient(colors: [.sunnyBlue, .secondary]), startPoint: .top, endPoint: .bottom)
+                        )
+                    .opacity(0.3)
+                    .frame(height: 10)
+                    
+            }
+            .frame(height: 230)
         }
-        .edgesIgnoringSafeArea(.top)
-        .frame(height: 180)
+        .ignoresSafeArea(.all)
     }
 }
 
+#Preview {
+    MainView()
+}
 #Preview {
     MainView()
 }

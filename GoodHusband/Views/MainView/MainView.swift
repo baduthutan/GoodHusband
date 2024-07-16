@@ -9,13 +9,18 @@ import SwiftUI
 
 struct MainView: View {
     var body: some View {
-        VStack(spacing: 16) {
-            LocationHeaderView(location: "SERPONG, TANGERANG", weatherDescription: "It’s Sunny all day!")
-            FavoriteDestinationView(destination: "Summarecon", location: "Bekasi", humidity: 52, temperature: 28, weatherIcon: "cloud.sun.fill")
-            Spacer()
+        ZStack{
+            VStack(spacing: 16) {
+                LocationHeaderView(location: "SERPONG, TANGERANG", weatherDescription: "It’s Sunny all day!")
+                DestinationCardView(destination: "Summarecon", location: "Bekasi", humidity: 52, temperature: 28, weatherIcon: "cloud.sun.fill", isPinned: true)
+                Spacer()
+            }
+            .padding(.top)
+            .background(Color(UIColor.systemGroupedBackground))
+            .ignoresSafeArea()
+            MapView(mapViewModel: MapViewModel(), weatherViewModel: WeatherViewModel())
+                .padding(.top, 130)
         }
-        .padding(.top)
-        .background(Color(UIColor.systemGroupedBackground).edgesIgnoringSafeArea(.all))
     }
 }
 
