@@ -13,7 +13,8 @@ struct DetailView: View {
     let weatherConditionDesc: String
     
     var body: some View {
-        VStack(alignment: .center) {
+        ScrollView {
+            /// LOCATION INFO SECTION
             HStack {
                 Image(systemName:"location")
                     .resizable()
@@ -26,13 +27,28 @@ struct DetailView: View {
                 Spacer()
             }
             .padding(.bottom, 20)
+            
+            /// DAILY WEATHER SECTION
             DailyWeatherView().padding(.bottom, 22)
+            
+            /// WEATHER INFO SECTION
             Text(weatherCondition)
                 .font(.largeTitle)
                 .bold()
                 .padding(.bottom, 6)
             Text(weatherConditionDesc)
                 .padding(.bottom, 22)
+            
+            /// WEATHER DETAIL SECTION
+            DestinationCardView(destination: "Summarecon", location: "Bekasi", humidity: 52, temperature: 28, weatherIcon: "cloud.sun.fill", isPinned: false)
+                .padding(.bottom, 22)
+            
+            /// RECOMMENDATION SECTION
+            ForEach((1..<4)) { _ in
+            RecommendationView(imageName: "WarmClothes", title: "Don’t forget your sunscreen!", description: "The UV Index is currently high. Use sunscreen and re-apply every 4 hours.")
+            }
+            
+            /// BUTTON SECTION
             Button(action: {
                 // TODO add action
             }) {
@@ -47,7 +63,6 @@ struct DetailView: View {
             Button("Pin This Information to Homepage") {
                 // TODO add action
             }
-            Spacer()
         }.padding(.horizontal, 16)
     }
 }

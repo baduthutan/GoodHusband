@@ -13,6 +13,7 @@ struct MainView: View {
             VStack(spacing: 16) {
                 LocationHeaderView(location: "SERPONG, TANGERANG", weatherDescription: "It’s Sunny all day!")
                 DestinationCardView(destination: "Summarecon", location: "Bekasi", humidity: 52, temperature: 28, weatherIcon: "cloud.sun.fill", isPinned: true)
+                    .padding(.horizontal)
                 Spacer()
             }
             .padding(.top)

@@ -52,7 +52,6 @@ struct DestinationCardView: View {
         }
         .background(Color(UIColor.sunnyBlue))
         .cornerRadius(10)
-        .padding(.horizontal)
     }
 }
 
