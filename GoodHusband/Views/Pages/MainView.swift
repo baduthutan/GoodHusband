@@ -8,17 +8,21 @@
 import SwiftUI
 
 struct MainView: View {
+    
+    private let weatherViewModel = WeatherViewModel.singleton
+    private let mapViewModel = MapViewModel.singleton
+    
     var body: some View {
         ZStack{
             VStack(spacing: 10) {
-                LocationHeaderView(location: "SERPONG, TANGERANG", weatherDescription: "It’s Sunny all day!")
+                LocationHeaderView()
                 PinnedLocationView(location: "Summarecon", isRainy: true)
                 Spacer()
             }
             .padding(.top)
             .background(Color(UIColor.systemGroupedBackground))
             .ignoresSafeArea()
-            MapView(mapViewModel: MapViewModel(), weatherViewModel: WeatherViewModel())
+            MapView()
                 .padding(.top, 140)
         }
     }

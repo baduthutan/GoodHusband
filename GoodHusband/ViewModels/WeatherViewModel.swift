@@ -12,9 +12,35 @@ import CoreLocation
 class WeatherViewModel: ObservableObject {
     @Published var weatherModel: WeatherModel?
     @Published var weatherForecasts: [WeatherModel] = []
+    @Published var isRainingNow: Bool = false
     
     private var weatherManager = WeatherManager()
     private var locationManager = LocationManager()
+    
+    static let singleton = WeatherViewModel()
+    
+    private init() {}
+    
+    func fetchIsRainingNow() {
+        let keywords = ["rain", "bolt", "drizzle"]
+        
+        Task {
+            do {
+                if let location = locationManager.location {
+                    let weatherSymbol = try await weatherManager.fetchCurrentWeatherSymbol(location: location)
+                    DispatchQueue.main.async {
+                        if keywords.contains(where: { weatherSymbol.contains($0) }) {
+                            self.isRainingNow = true
+                        } else {
+                            self.isRainingNow = false
+                        }
+                    }
+                }
+            } catch {
+                print("Failed to get weather data. \(error)")
+            }
+        }
+    }
     
     func fetchWeather() {
         Task {

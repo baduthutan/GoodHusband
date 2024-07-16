@@ -12,23 +12,30 @@ import CoreLocation
 class WeatherManager {
     private let weatherService = WeatherService()
     
+    func fetchCurrentWeatherSymbol(location: CLLocation) async throws -> String {
+        let weather = try await weatherService.weather(for: location)
+        
+        let currenWeather = weather.currentWeather
+        
+        let weatherSymbol = currenWeather.symbolName
+        
+        return weatherSymbol
+    }
+    
     func fetchWeather(location: CLLocation) async throws -> WeatherModel {
         let weather = try await weatherService.weather(for: location)
         
-        let currentWeather = weather.currentWeather
-        let todayWeather = weather.dailyForecast.first
+        let dayWeather = weather.dailyForecast.first
         
-        let weatherDate = currentWeather.date
-        let weatherCondition = currentWeather.condition.rawValue
-        let conditionSymbolName: String = currentWeather.symbolName
-        let temperature = Int(currentWeather.apparentTemperature.value.rounded())
-        let rainChance = Int(((todayWeather?.precipitationChance ?? 0.0) * 100).rounded())
-        let uvIndex = Int(currentWeather.uvIndex.value)
-        let humidity = Int((currentWeather.humidity * 100).rounded())
+        let weatherDate = dayWeather?.date
+        let conditionSymbolName = dayWeather?.symbolName ?? ""
+        let temperature = try await getDayFeelsLikeTemperature(for: weatherDate ?? Date(), location: location)
+        let rainChance = Int(((dayWeather?.precipitationChance ?? -1.0) * 100).rounded())
+        let uvIndex = dayWeather?.uvIndex.value ?? -1
+        let humidity = try await getDailyHumidity(for: weatherDate ?? Date(), location: location)
         
         return WeatherModel(
-            date: weatherDate,
-            weatherCondition: weatherCondition,
+            date: weatherDate ?? Date(),
             conditionSymbolName: conditionSymbolName,
             temperature: temperature,
             rainChance: rainChance,
@@ -43,7 +50,6 @@ class WeatherManager {
         
         for dayWeather in weather.dailyForecast.prefix(7) {
             let weatherDate = dayWeather.date
-            let weatherCondition = dayWeather.condition.rawValue
             let conditionSymbolName = dayWeather.symbolName
             let temperature = try await getDayFeelsLikeTemperature(for: weatherDate, location: location)
             let rainChance = Int((dayWeather.precipitationChance * 100).rounded())
@@ -52,7 +58,6 @@ class WeatherManager {
             
             let weatherModel = WeatherModel(
                 date: weatherDate,
-                weatherCondition: weatherCondition,
                 conditionSymbolName: conditionSymbolName,
                 temperature: temperature,
                 rainChance: rainChance,

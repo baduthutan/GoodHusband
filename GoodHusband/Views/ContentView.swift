@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var weatherViewModel = WeatherViewModel()
-    @StateObject private var mapViewModel = MapViewModel()
+    private let weatherViewModel = WeatherViewModel.singleton
+    private let mapViewModel = MapViewModel.singleton
     
     var body: some View {
-        MapView(mapViewModel: mapViewModel, weatherViewModel: weatherViewModel)
+        MainView()
+            .onAppear {
+                Task {
+                    weatherViewModel.fetchWeather()
+                    weatherViewModel.fetchDailyForecast()
+                    weatherViewModel.fetchIsRainingNow()
+                }
+            }
     }
 }
 
