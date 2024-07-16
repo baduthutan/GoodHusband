@@ -88,11 +88,11 @@ struct MapSearchOverlayView: View {
     var body: some View {
         TextField("Search for a location...", text: $searchText)
             .font(.subheadline)
-            .padding(12)
+            .padding(8)
             .background(Color.white)
             .cornerRadius(4)
             .padding()
-            .shadow(color: .gray, radius: 2)
+            .shadow(color: .black.opacity(0.2), radius: 2)
     }
 }
 
