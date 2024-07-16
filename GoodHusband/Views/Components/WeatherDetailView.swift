@@ -14,18 +14,17 @@ struct WeatherDetailView: View {
     var body: some View {
         VStack {
             Image(systemName: imageName)
-                .font(.system(size: 22))
+                .font(.system(size: 18))
                 .foregroundColor(.black)
                 .padding(.bottom, 1)
             
             Text(value)
-                .font(.system(size: 16))
+                .font(.system(size: 12))
                 .foregroundColor(.black)
         }
-        .frame(width: 55, height: 80)
-        .background(Color.white)
+        .frame(width: 40, height: 65)
+        .background(.white.opacity(0.75))
         .cornerRadius(50)
-        .shadow(color: Color.gray.opacity(0.4), radius: 4, x: 0, y: 2)
     }
 }
 
