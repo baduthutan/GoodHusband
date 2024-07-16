@@ -9,7 +9,6 @@ import Foundation
 
 struct WeatherModel {
     var date: Date
-    var weatherCondition: String
     var conditionSymbolName: String
     var temperature: Int
     var rainChance: Int
