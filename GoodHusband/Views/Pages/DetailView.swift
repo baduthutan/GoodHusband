@@ -40,7 +40,8 @@ struct DetailView: View {
                 .padding(.bottom, 22)
             
             /// WEATHER DETAIL SECTION
-            DestinationCardView(destination: "Summarecon", location: "Bekasi", humidity: 52, temperature: 28, weatherIcon: "cloud.sun.fill", isPinned: false)
+            DestinationCardView(temperature: 28, rainChance: 50, uvIndex: 5, humidity: 52, isPinned: false)
+
                 .padding(.bottom, 22)
             
             /// RECOMMENDATION SECTION

@@ -30,8 +30,8 @@ struct DestinationCardView: View {
                         WeatherDetailView(imageName: "cloud.rain.fill", value: "\(rainChance)%")
                         WeatherDetailView(imageName: "sun.max", value: "UV \(uvIndex)")
                         WeatherDetailView(imageName: "humidity", value: "\(humidity)%")
+                            Spacer()
                     }
-                    .frame(width:150)
                 }
                 if isPinned == true{
                     VStack() {
