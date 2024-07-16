@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct DestinationCardView: View {
-    var destination: String
-    var location: String
-    var humidity: Int
     var temperature: Int
-    var weatherIcon: String
+    var rainChance: Int
+    var uvIndex: Int
+    var humidity: Int
     var isPinned: Bool
 
     var body: some View {
@@ -28,11 +27,9 @@ struct DestinationCardView: View {
                             .font(.system(size: 48))
                             .bold()
                     HStack {
-          
-                            WeatherDetailView(imageName: "cloud.rain.fill", value: "90%")
-                            WeatherDetailView(imageName: "sun.max", value: "UV 5")
-                            WeatherDetailView(imageName: "humidity", value: "52%")
-                        
+                        WeatherDetailView(imageName: "cloud.rain.fill", value: "\(rainChance)%")
+                        WeatherDetailView(imageName: "sun.max", value: "UV \(uvIndex)")
+                        WeatherDetailView(imageName: "humidity", value: "\(humidity)%")
                     }
                     .frame(width:150)
                 }
@@ -52,11 +49,9 @@ struct DestinationCardView: View {
         }
         .background(Color(UIColor.sunnyBlue))
         .cornerRadius(10)
-        .padding(.horizontal)
     }
 }
 
 #Preview {
-    MainView()
+    DestinationCardView(temperature: 28, rainChance: 50, uvIndex: 5, humidity: 52, isPinned: true)
 }
-
