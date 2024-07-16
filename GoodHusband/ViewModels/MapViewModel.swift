@@ -19,14 +19,24 @@ class MapViewModel: ObservableObject {
     @Published var routeDisplaying = false
     @Published var userLocation: CLLocation?
     
+    private var locationManager = LocationManager()
+    
+    static let singleton = MapViewModel()
+    
+    private init() {}
+    
     func searchPlaces() async {
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = searchText
         request.region = .userRegion
         
-        let results = try? await MKLocalSearch(request: request).start()
-        self.results = results?.mapItems ?? []
-        self.showDetails = false
+        let search = MKLocalSearch(request: request)
+        let response = try? await search.start()
+        
+        DispatchQueue.main.async {
+            self.results = response?.mapItems ?? []
+            self.showDetails = false
+        }
     }
 }
 
