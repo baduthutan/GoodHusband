@@ -32,15 +32,13 @@ struct RecommendationView: View {
             Spacer()
         }
         .padding()
-        .background(Color.white)
         .cornerRadius(12)
-        .shadow(color: Color.gray.opacity(0.4), radius: 8, x: 0, y: 2)
     }
 }
 
 struct RecommendationView_Previews: PreviewProvider {
     static var previews: some View {
-        RecommendationView(imageName: "image", title: "Don’t forget your sunscreen!", description: "The UV Index is currently high. Use sunscreen and re-apply every 4 hours.")
+        RecommendationView(imageName: "WarmClothes", title: "Don’t forget your sunscreen!", description: "The UV Index is currently high. Use sunscreen and re-apply every 4 hours.")
             .previewLayout(.sizeThatFits)
     }
 }
