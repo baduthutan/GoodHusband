@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct LocationHeaderView: View {
-    var location: String
-    var weatherDescription: String
+    
+    @ObservedObject private var locationHeaderViewModel = LocationHeaderViewModel()
     
     var body: some View {
         VStack {
@@ -22,10 +22,10 @@ struct LocationHeaderView: View {
                     .padding(.bottom, 12)
                 HStack{
                     VStack(alignment: .leading, spacing: 8){
-                        Text(location)
+                        Text(locationHeaderViewModel.location)
                             .font(.headline)
                             .foregroundColor(.primary)
-                        Text(weatherDescription)
+                        Text(locationHeaderViewModel.weatherDescription)
                             .font(.title)
                             .bold()
                             .foregroundColor(.primary)
@@ -52,9 +52,6 @@ struct LocationHeaderView: View {
     }
 }
 
-#Preview {
-    MainView()
-}
 #Preview {
     MainView()
 }
