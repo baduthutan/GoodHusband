@@ -42,32 +42,36 @@ class WeatherViewModel: ObservableObject {
         }
     }
     
-    func fetchWeather() {
-        Task {
-            do {
-                if let location = locationManager.location {
-                    let weatherModel = try await weatherManager.fetchWeather(location: location)
-                    DispatchQueue.main.async {
-                        self.weatherModel = weatherModel
-                    }
-                }
-            } catch {
-                print("Failed to get weather data. \(error)")
-            }
-        }
-    }
+//    func fetchWeather() {
+//        Task {
+//            do {
+//                if let location = locationManager.location {
+//                    let weatherModel = try await weatherManager.fetchWeather(location: location)
+//                    DispatchQueue.main.async {
+//                        self.weatherModel = weatherModel
+//                    }
+//                }
+//            } catch {
+//                print("Failed to get weather data. \(error)")
+//            }
+//        }
+//    }
     
-    func fetchDailyForecast() {
-        Task {
-            do {
-                if let location = locationManager.location {
-                    let weatherForecast = try await weatherManager.fetchWeatherForecast(location: location)
-                    DispatchQueue.main.async {
-                        self.weatherForecasts = weatherForecast
+    func fetchDailyForecast(completion: @escaping() -> Void) {
+        if weatherForecasts.isEmpty {
+            Task {
+                do {
+                    if let location = locationManager.location {
+                        let weatherForecast = try await weatherManager.fetchWeatherForecast(location: location)
+                        DispatchQueue.main.async {
+                            self.weatherForecasts = weatherForecast
+                            completion()
+                        }
                     }
+                } catch {
+                    print("Failed to get weather data. \(error)")
+                    completion()
                 }
-            } catch {
-                print("Failed to get weather data. \(error)")
             }
         }
     }

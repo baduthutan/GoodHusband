@@ -27,9 +27,9 @@ struct DestinationCardView: View {
                             .font(.system(size: 48))
                             .bold()
                     HStack {
-                        WeatherDetailView(imageName: "cloud.rain.fill", value: "\(rainChance)%")
-                        WeatherDetailView(imageName: "sun.max", value: "UV \(uvIndex)")
-                        WeatherDetailView(imageName: "humidity", value: "\(humidity)%")
+                        WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(imageName: .rainChance))
+                        WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(imageName: .uvIndex))
+                        WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(imageName: .humidity))
                             Spacer()
                     }
                 }

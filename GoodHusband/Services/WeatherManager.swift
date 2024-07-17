@@ -99,7 +99,8 @@ class WeatherManager {
             return -1 // Or any default value you consider appropriate
         }
         
-        let averageHumidity = dailyHumidityValues.reduce(0, +) / Double(dailyHumidityValues.count)
+        let totalHumidity = dailyHumidityValues.reduce(0, +)
+        let averageHumidity = Double(totalHumidity) / Double(dailyHumidityValues.count) * 100
         return Int(averageHumidity.rounded())
     }
 }
