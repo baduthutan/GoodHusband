@@ -77,7 +77,7 @@ class WeatherViewModel: ObservableObject {
         }
     }
     
-    func fetchWeeklyForecast(for latitude: Double, longitude: Double) {
+    func fetchWeeklyForecast(for latitude: Double, longitude: Double, completion: @escaping() -> Void) {
         Task {
             do {
                 let location = CLLocation(latitude: latitude, longitude: longitude)

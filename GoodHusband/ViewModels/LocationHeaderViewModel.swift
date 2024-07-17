@@ -11,7 +11,6 @@ import CoreLocation
 class LocationHeaderViewModel: ObservableObject {
     @Published var location: String = "Loading..."
     @Published var headerWeatherDisplay: HeaderWeatherDisplay
-    @Published var weatherDescription: String = "Loading Weather..."
     
     private let weatherViewModel = WeatherViewModel.singleton
     private let locationManager = LocationManager()
@@ -73,7 +72,6 @@ class LocationHeaderViewModel: ObservableObject {
             let isRainingNow = self.weatherViewModel.isRainingNow
             
             if isRainingNow {
-                self.weatherDescription = "It's raining right now"
                 self.headerWeatherDisplay = HeaderWeatherDisplay(
                     weatherDescription: "It's raining right now",
                     backgroundImage: .rain,
@@ -81,7 +79,6 @@ class LocationHeaderViewModel: ObservableObject {
                 )
             } 
             else if weatherData.rainChance < 40 {
-                self.weatherDescription = "It will be sunny all day"
                 self.headerWeatherDisplay = HeaderWeatherDisplay(
                     weatherDescription: "It will be sunny all day",
                     backgroundImage: .sunnyBlue,
@@ -89,7 +86,6 @@ class LocationHeaderViewModel: ObservableObject {
                 )
             } 
             else {
-                self.weatherDescription = "It seems like it's gonna rain"
                 self.headerWeatherDisplay = HeaderWeatherDisplay(
                     weatherDescription: "It seems like it's gonna rain",
                     backgroundImage: .willRain,

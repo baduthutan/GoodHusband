@@ -28,7 +28,7 @@ struct LocationHeaderView: View {
                         })
                         .font(.subheadline)
                         .foregroundColor(.primary)
-                        Text(locationHeaderViewModel.weatherDescription)
+                        Text(locationHeaderViewModel.headerWeatherDisplay.weatherDescription)
                             .font(.title)
                             .bold()
                             .foregroundColor(.primary)
