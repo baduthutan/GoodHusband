@@ -109,11 +109,11 @@ struct DetailView: View {
 }
 
 
-#Preview {
-    DetailView(
-        location: "Summarecon, Bekasi",
-        weatherCondition: "It’s Sunny all day!",
-        weatherConditionDesc: "It doesn’t seem like going to rain there today."
-    )
-    .background(Color("BgCard"))
-}
+//#Preview {
+//    DetailView(
+//        location: "Summarecon, Bekasi",
+//        weatherCondition: "It’s Sunny all day!",
+//        weatherConditionDesc: "It doesn’t seem like going to rain there today."
+//    )
+//    .background(Color("BgCard"))
+//}

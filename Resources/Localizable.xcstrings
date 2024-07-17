@@ -111,9 +111,6 @@
         }
       }
     },
-    "Favorite Locations" : {
-
-    },
     "Favourite destination" : {
       "extractionState" : "manual",
       "localizations" : {

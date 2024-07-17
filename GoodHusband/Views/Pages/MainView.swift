@@ -14,46 +14,42 @@ struct MainView: View {
     
     var body: some View {
         NavigationView(content: {
-            ZStack{
-                VStack(spacing: 10) {
-                    LocationHeaderView()
-                    if !favoritesManager.favorites.isEmpty {
-                        Text("Favorite Locations")
-                            .font(.headline)
-                            .padding(.top)
-                        
-                        ScrollView(content: {
-                            ForEach(favoritesManager.favorites) { favorite in
-                                    NavigationLink(destination: {
-                                        DetailView(
-                                            location: favorite.name,
-                                            address: favorite.address,
-                                            latitude: favorite.latitude,
-                                            longitude: favorite.longitude,
-                                            weatherModel: WeatherModel(
-                                                date: Date(),
-                                                conditionSymbolName: favorite.weatherCondition,
-                                                temperature: Int(favorite.temperature),
-                                                rainChance: favorite.rainChance,
-                                                uvIndex: favorite.uvIndex,
-                                                humidity: favorite.humidity
+            ScrollView{
+                ZStack{
+                    VStack(spacing: 10) {
+                        LocationHeaderView()
+                        if !favoritesManager.favorites.isEmpty {
+                                ForEach(favoritesManager.favorites) { favorite in
+                                        NavigationLink(destination: {
+                                            DetailView(
+                                                location: favorite.name,
+                                                address: favorite.address,
+                                                latitude: favorite.latitude,
+                                                longitude: favorite.longitude,
+                                                weatherModel: WeatherModel(
+                                                    date: Date(),
+                                                    conditionSymbolName: favorite.weatherCondition,
+                                                    temperature: Int(favorite.temperature),
+                                                    rainChance: favorite.rainChance,
+                                                    uvIndex: favorite.uvIndex,
+                                                    humidity: favorite.humidity
+                                                )
                                             )
-                                        )
-                                    }, label: {
-                                        PinnedLocationView(location: favorite.name, isRainy: true, weatherModel: WeatherModel(date: Date(), conditionSymbolName: favorite.weatherCondition, temperature: Int(favorite.temperature), rainChance: favorite.rainChance, uvIndex: favorite.uvIndex, humidity: favorite.humidity))
-                                    })
-                            }
-                        })
-                        .background(.white)
+                                        }, label: {
+                                            PinnedLocationView(location: favorite.name, isRainy: true, weatherModel: WeatherModel(date: Date(), conditionSymbolName: favorite.weatherCondition, temperature: Int(favorite.temperature), rainChance: favorite.rainChance, uvIndex: favorite.uvIndex, humidity: favorite.humidity))
+                                        })
+                                }
+                        }
+                        OverallForecastView(location: "BSD, Tangerang")
+
+                        Spacer()
                     }
-                    Spacer()
+                    MapView()
+                        .padding(.top, 195)
                 }
-                .padding(.top)
-                .background(Color("BgPage"))
-                .ignoresSafeArea()
-                MapView()
-                    .padding(.top, 195)
             }
+            .background(Color("BgPage"))
+            .ignoresSafeArea()
         })
     }
     

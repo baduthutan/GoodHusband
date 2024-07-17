@@ -21,7 +21,7 @@ class LocationHeaderViewModel: ObservableObject {
     init() {
         self.headerWeatherDisplay = HeaderWeatherDisplay(
             weatherDescription: "Loading Weather...",
-            backgroundImage: .sunnyBlue,
+            backgroundImage: .bgSunny,
             image: .sunnyHeader
         )
         
@@ -87,7 +87,7 @@ class LocationHeaderViewModel: ObservableObject {
                 self.weatherDescription = "It will be sunny all day"
                 self.headerWeatherDisplay = HeaderWeatherDisplay(
                     weatherDescription: "It will be sunny all day",
-                    backgroundImage: .sunnyBlue,
+                    backgroundImage: .bgSunny,
                     image: .sunnyHeader
                 )
             } 
