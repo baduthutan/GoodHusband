@@ -73,7 +73,7 @@ struct DetailView: View {
             
             /// RECOMMENDATION SECTION
             ForEach((1..<4)) { _ in
-                RecommendationView(imageName: "WarmClothes", title: "Don’t forget your sunscreen!", description: "The UV Index is currently high. Use sunscreen and re-apply every 4 hours.")
+                RecommendationView(recommendationViewModel: RecommendationViewModel( recommendation: RecommendationModel( imageName: "WarmClothes", title: "Don’t forget your sunscreen!", description: "The UV Index is currently high. Use sunscreen and re-apply every 4 hours.")))
             }
             
             /// BUTTON SECTION

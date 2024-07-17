@@ -23,7 +23,7 @@ struct MainView: View {
                                     PinnedLocationView(favorite: favorite, location: favorite.name, isRainy: true, weatherModel: WeatherModel(date: Date(), conditionSymbolName: favorite.weatherCondition, temperature: Int(favorite.temperature), rainChance: favorite.rainChance, uvIndex: favorite.uvIndex, humidity: favorite.humidity))
                                 }
                         }
-                        OverallForecastView(location: "BSD, Tangerang")
+                        OverallForecastView()
 
                         Spacer()
                     }

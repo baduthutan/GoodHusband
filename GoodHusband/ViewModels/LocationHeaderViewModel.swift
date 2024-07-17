@@ -20,7 +20,6 @@ class LocationHeaderViewModel: ObservableObject {
     
     init() {
         self.headerWeatherDisplay = HeaderWeatherDisplay(
-            weatherDescription: "Loading Weather...",
             backgroundImage: .bgSunny,
             image: .sunnyHeader
         )
@@ -70,34 +69,30 @@ class LocationHeaderViewModel: ObservableObject {
     
     
     private func getWeatherDescription() {
-        DispatchQueue.main.async {
-            let weatherData = self.weatherViewModel.weatherForecasts[0]
-            let isRainingNow = self.weatherViewModel.isRainingNow
-            
-            if isRainingNow {
-                self.weatherDescription = "It's raining right now"
-                self.textColor = .white
-                self.headerWeatherDisplay = HeaderWeatherDisplay(
-                    weatherDescription: "It's raining right now",
-                    backgroundImage: .rain,
-                    image: .sunnyHeader
-                )
-            } 
-            else if weatherData.rainChance < 40 {
-                self.weatherDescription = "It will be sunny all day"
-                self.headerWeatherDisplay = HeaderWeatherDisplay(
-                    weatherDescription: "It will be sunny all day",
-                    backgroundImage: .bgSunny,
-                    image: .sunnyHeader
-                )
-            } 
-            else {
-                self.weatherDescription = "It seems like it's gonna rain"
-                self.headerWeatherDisplay = HeaderWeatherDisplay(
-                    weatherDescription: "It seems like it's gonna rain",
-                    backgroundImage: .willRain,
-                    image: .sunnyHeader
-                )
-            }
+        let weatherData = self.weatherViewModel.weatherForecasts[0]
+        let isRainingNow = self.weatherViewModel.isRainingNow
+        
+        if isRainingNow {
+            self.weatherDescription = "It's raining right now"
+            self.textColor = .white
+            self.headerWeatherDisplay = HeaderWeatherDisplay(
+                backgroundImage: .bgRaining,
+                image: .rainHeader
+            )
         }
-    }}
+        else if weatherData.rainChance < 40 {
+            self.weatherDescription = "It will be sunny all day"
+            self.headerWeatherDisplay = HeaderWeatherDisplay(
+                backgroundImage: .bgSunny,
+                image: .sunnyHeader
+            )
+        }
+        else {
+            self.weatherDescription = "It seems like it's gonna rain"
+            self.headerWeatherDisplay = HeaderWeatherDisplay(
+                backgroundImage: .bgWillRain,
+                image: .willRainHeader
+            )
+        }
+    }
+}

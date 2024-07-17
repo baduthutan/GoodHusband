@@ -18,6 +18,8 @@ class WeatherViewModel: ObservableObject {
     private var weatherManager = WeatherManager()
     private var locationManager = LocationManager()
     
+    private var isFetching = false
+    
     static let singleton = WeatherViewModel()
     
     private init() {}
@@ -59,25 +61,30 @@ class WeatherViewModel: ObservableObject {
     }
     
     func fetchDailyForecast(completion: @escaping() -> Void) {
-        if weatherForecasts.isEmpty {
+        if weatherForecasts.isEmpty || !isFetching {
+            isFetching = true
             Task {
                 do {
                     if let location = locationManager.location {
                         let weatherForecast = try await weatherManager.fetchWeatherForecast(location: location)
                         DispatchQueue.main.async {
                             self.weatherForecasts = weatherForecast
+                            self.isFetching = false
                             completion()
                         }
                     }
                 } catch {
                     print("Failed to get weather data. \(error)")
+                    self.isFetching = false
                     completion()
                 }
             }
+        } else {
+            completion()
         }
     }
     
-    func fetchWeeklyForecast(for latitude: Double, longitude: Double) {
+    func fetchWeeklyForecast(for latitude: Double, longitude: Double, completion: @escaping() -> Void) {
         Task {
             do {
                 let location = CLLocation(latitude: latitude, longitude: longitude)

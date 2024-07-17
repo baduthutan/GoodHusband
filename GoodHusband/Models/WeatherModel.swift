@@ -1,8 +1,8 @@
 //
-//  Weather.swift
+//  WeatherModel.swift
 //  GoodHusband
 //
-//  Created by vin chen on 09/07/24.
+//  Created by Dixon Willow on 17/07/24.
 //
 
 import Foundation
