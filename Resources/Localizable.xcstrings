@@ -2,7 +2,14 @@
   "sourceLanguage" : "en",
   "strings" : {
     "%lld°" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld°"
+          }
+        }
+      }
     },
     "Avoid thick clothes." : {
       "extractionState" : "manual",
@@ -38,7 +45,14 @@
       }
     },
     "Click to see 7-day forecast" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klik untuk melihat perkiraan 7 hari"
+          }
+        }
+      }
     },
     "Connection Lost" : {
       "extractionState" : "manual",
@@ -217,7 +231,14 @@
       }
     },
     "overall forecast in %@" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "perkiraan keseluruhan dalam %@"
+          }
+        }
+      }
     },
     "Pin This Information to Homepage" : {
       "extractionState" : "manual",
@@ -253,7 +274,14 @@
       }
     },
     "Search for a location..." : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cari lokasi..."
+          }
+        }
+      }
     },
     "Search Location" : {
       "extractionState" : "manual",
@@ -289,7 +317,14 @@
       }
     },
     "Showers expected at 6PM." : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hujan diperkirakan akan turun pada pukul 18.00."
+          }
+        }
+      }
     },
     "The temperature is reaching 29°. Stay comfortable by wearing outfit that easily absorbs sweat and avoid dressing in layers." : {
       "extractionState" : "manual",
