@@ -9,8 +9,36 @@ import SwiftUI
 
 struct DetailView: View {
     let location: String
-    let weatherCondition: String
-    let weatherConditionDesc: String
+    let address: String
+    let latitude: Double
+    let longitude: Double
+    let weatherModel: WeatherModel
+    
+    @ObservedObject private var favoritesManager = FavoritesManager.shared
+    @ObservedObject var weatherViewModel = WeatherViewModel.singleton
+    @State private var isPinned: Bool = false
+    private var favoriteLocation: FavoriteLocation
+    
+    init(location: String, address: String, latitude: Double, longitude: Double, weatherModel: WeatherModel) {
+        self.location = location
+        self.address = address
+        self.latitude = latitude
+        self.longitude = longitude
+        self.weatherModel = weatherModel
+        self.favoriteLocation = FavoriteLocation(
+            id: UUID(),
+            name: location,
+            address: address,
+            latitude: latitude,
+            longitude: longitude,
+            weatherCondition: weatherModel.conditionSymbolName,
+            weatherConditionDesc: "Temperature: \(weatherModel.temperature)°C, Rain Chance: \(weatherModel.rainChance)%, UV Index: \(weatherModel.uvIndex), Humidity: \(weatherModel.humidity)%",
+            temperature: Double(weatherModel.temperature),
+            rainChance: weatherModel.rainChance,
+            uvIndex: weatherModel.uvIndex,
+            humidity: weatherModel.humidity
+        )
+    }
     
     var body: some View {
         ScrollView {
@@ -32,21 +60,20 @@ struct DetailView: View {
             DailyWeatherView().padding(.bottom, 22)
             
             /// WEATHER INFO SECTION
-            Text(weatherCondition)
+            Text(weatherModel.conditionSymbolName)
                 .font(.largeTitle)
                 .bold()
                 .padding(.bottom, 6)
-            Text(weatherConditionDesc)
+            Text("weatherConditionDesc")
                 .padding(.bottom, 22)
             
             /// WEATHER DETAIL SECTION
-            DestinationCardView(temperature: 28, rainChance: 50, uvIndex: 5, humidity: 52, isPinned: false)
-
+            DestinationCardView(temperature: weatherModel.temperature, rainChance: weatherModel.rainChance, uvIndex: weatherModel.uvIndex, humidity: weatherModel.humidity, isPinned: isPinned)
                 .padding(.bottom, 22)
             
             /// RECOMMENDATION SECTION
             ForEach((1..<4)) { _ in
-            RecommendationView(imageName: "WarmClothes", title: "Don’t forget your sunscreen!", description: "The UV Index is currently high. Use sunscreen and re-apply every 4 hours.")
+                RecommendationView(imageName: "WarmClothes", title: "Don’t forget your sunscreen!", description: "The UV Index is currently high. Use sunscreen and re-apply every 4 hours.")
             }
             
             /// BUTTON SECTION
@@ -61,17 +88,26 @@ struct DetailView: View {
             .buttonStyle(.borderedProminent)
             .cornerRadius(8)
             .padding(.bottom, 16)
-            Button("Pin This Information to Homepage") {
-                // TODO add action
-            }
-        }.padding(.horizontal, 16)
+            Button(action: {
+                if isPinned {
+                    favoritesManager.removeFavorite(location: favoriteLocation)
+                } else {
+                    favoritesManager.addFavorite(location: favoriteLocation)
+                }
+                isPinned.toggle()
+            }, label: {
+                Text(isPinned ? "Remove from Homepage" : "Pin This Information to Homepage")
+            })
+        }
+        .padding(.horizontal, 16)
+        .onAppear {
+            isPinned = favoritesManager.favorites.contains(where: { $0.latitude == latitude && $0.longitude == longitude })
+
+        }
     }
 }
 
+
 #Preview {
-    DetailView(
-        location: "Summarecon, Bekasi",
-        weatherCondition: "It’s Sunny all day!",
-        weatherConditionDesc: "It doesn’t seem like going to rain there today."
-    )
+    MainView()
 }

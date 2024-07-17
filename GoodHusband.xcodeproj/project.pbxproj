@@ -32,6 +32,8 @@
 		57E5038B2C45D4B3004D3509 /* DailyWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E5038A2C45D4B3004D3509 /* DailyWeatherView.swift */; };
 		D017725F2C3FD28B00F077FE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D017725E2C3FD28B00F077FE /* MapView.swift */; };
 		D01772612C3FDAD900F077FE /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01772602C3FDAD900F077FE /* MapViewModel.swift */; };
+		D034BE502C471B9E003CBD88 /* HeaderWeatherDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D034BE4F2C471B9E003CBD88 /* HeaderWeatherDisplay.swift */; };
+		D034BE522C474D59003CBD88 /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D034BE512C474D59003CBD88 /* FavoritesManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +64,9 @@
 		57E5038A2C45D4B3004D3509 /* DailyWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeatherView.swift; sourceTree = "<group>"; };
 		D017725E2C3FD28B00F077FE /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D01772602C3FDAD900F077FE /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		D034BE4C2C4712D3003CBD88 /* GoodHusband.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoodHusband.entitlements; sourceTree = "<group>"; };
+		D034BE4F2C471B9E003CBD88 /* HeaderWeatherDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderWeatherDisplay.swift; sourceTree = "<group>"; };
+		D034BE512C474D59003CBD88 /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +102,8 @@
 		1A30D50B2C3D2AAA00059D5F /* GoodHusband */ = {
 			isa = PBXGroup;
 			children = (
+				D034BE4E2C471AF3003CBD88 /* Type */,
+				D034BE4C2C4712D3003CBD88 /* GoodHusband.entitlements */,
 				1A30D54B2C46534800059D5F /* GoodHusbandRelease.entitlements */,
 				1A30D50C2C3D2AAA00059D5F /* GoodHusbandApp.swift */,
 				1A30D5282C3D2BF800059D5F /* Models */,
@@ -143,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				2645E58C2C41103600540DC3 /* WeatherManager.swift */,
+				D034BE512C474D59003CBD88 /* FavoritesManager.swift */,
 				1A30D5272C3D2BF800059D5F /* LocationManager.swift */,
 			);
 			path = Services;
@@ -194,6 +202,14 @@
 				573C84D42C4667E3008825AC /* DayWeatherView.swift */,
 			);
 			path = Cards;
+			sourceTree = "<group>";
+		};
+		D034BE4E2C471AF3003CBD88 /* Type */ = {
+			isa = PBXGroup;
+			children = (
+				D034BE4F2C471B9E003CBD88 /* HeaderWeatherDisplay.swift */,
+			);
+			path = Type;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +288,7 @@
 			files = (
 				D017725F2C3FD28B00F077FE /* MapView.swift in Sources */,
 				2645E58D2C41103600540DC3 /* WeatherManager.swift in Sources */,
+				D034BE502C471B9E003CBD88 /* HeaderWeatherDisplay.swift in Sources */,
 				1A30D5502C46609900059D5F /* RecommendationView.swift in Sources */,
 				1A30D5342C3D2BF800059D5F /* LocationManager.swift in Sources */,
 				1A30D53E2C423B7100059D5F /* MainView.swift in Sources */,
@@ -288,6 +305,7 @@
 				1A30D5542C46669700059D5F /* PinnedLocationView.swift in Sources */,
 				263D2A6E2C46AD6800BA8674 /* LocationHeaderViewModel.swift in Sources */,
 				1A30D50D2C3D2AAA00059D5F /* GoodHusbandApp.swift in Sources */,
+				D034BE522C474D59003CBD88 /* FavoritesManager.swift in Sources */,
 				573C84D72C46684E008825AC /* DetailView.swift in Sources */,
 				573C84D52C4667E3008825AC /* DayWeatherView.swift in Sources */,
 				D01772612C3FDAD900F077FE /* MapViewModel.swift in Sources */,
@@ -421,10 +439,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GoodHusband/GoodHusband.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GoodHusband/Preview Content\"";
-				DEVELOPMENT_TEAM = VPGX5Q423F;
+				DEVELOPMENT_TEAM = H84M48MBJL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
@@ -440,7 +459,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "xcode.delta.test-weather";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Agfi.WeatherKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -458,7 +477,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GoodHusband/Preview Content\"";
-				DEVELOPMENT_TEAM = VPGX5Q423F;
+				DEVELOPMENT_TEAM = H84M48MBJL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
@@ -474,7 +493,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "xcode.delta.test-weather";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Agfi.WeatherKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

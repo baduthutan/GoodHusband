@@ -14,23 +14,24 @@ struct MapView: View {
     @State var mapSelection: MKMapItem?
     @State var isMapSelected: Bool = false
     @State private var showSearchResults = false
-
+    @State private var isNavigatingToDetail = false
+    
     @ObservedObject var mapViewModel = MapViewModel.singleton
     @ObservedObject var weatherViewModel = WeatherViewModel.singleton
-
+    
     var body: some View {
         ZStack {
-            VStack(content: {
+            VStack {
                 MapSearchOverlayView(searchText: $mapViewModel.searchText)
-                .onSubmit(of: .text) {
-                    Task {
-                        await mapViewModel.searchPlaces()
-                        showSearchResults = true
+                    .onSubmit(of: .text) {
+                        Task {
+                            await mapViewModel.searchPlaces()
+                            showSearchResults = true
+                        }
                     }
-                }
-                .onChange(of: mapSelection, { oldValue, newValue in
-                    mapViewModel.showDetails = newValue != nil
-                })
+                    .onChange(of: mapSelection, { oldValue, newValue in
+                        mapViewModel.showDetails = newValue != nil
+                    })
                 Spacer()
                 if showSearchResults {
                     List(mapViewModel.results, id: \.self) { item in
@@ -38,6 +39,7 @@ struct MapView: View {
                             mapSelection = item
                             showSearchResults = false
                             isMapSelected = true
+                            weatherViewModel.fetchWeather() // Fetch weather for the selected location
                         }) {
                             VStack(alignment: .leading) {
                                 Text(item.placemark.name ?? "Unknown Place")
@@ -48,10 +50,24 @@ struct MapView: View {
                         }
                     }
                 }
-            })
-            .sheet(isPresented: $isMapSelected, content: {
-                
-            })
+            }
+            .sheet(isPresented: $isMapSelected) {
+                if let mapSelection = mapSelection,
+                   let location = mapSelection.placemark.name,
+                   let administrativeArea = mapSelection.placemark.administrativeArea,
+                   let latitude = mapSelection.placemark.location?.coordinate.latitude,
+                   let longitude = mapSelection.placemark.location?.coordinate.longitude,
+                   let weatherModel = weatherViewModel.weatherModel {
+                    
+                    DetailView(
+                        location: location,
+                        address: "\(location), \(administrativeArea)",
+                        latitude: latitude,
+                        longitude: longitude,
+                        weatherModel: weatherModel
+                    )
+                }
+            }
         }
     }
 }
