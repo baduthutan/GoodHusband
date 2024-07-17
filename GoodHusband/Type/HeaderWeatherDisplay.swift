@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 struct HeaderWeatherDisplay {
-    var weatherDescription: String
     var backgroundImage: Color
     var image: ImageResource
 }

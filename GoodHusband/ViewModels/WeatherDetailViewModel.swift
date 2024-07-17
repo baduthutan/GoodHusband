@@ -17,6 +17,7 @@ class WeatherDetailViewModel: ObservableObject {
         self.imageName = imageName
         self.value = 0
         
+        weatherViewModel.fetchIsRainingNow()
         weatherViewModel.fetchDailyForecast {
             self.fetchWeatherDetailValue()
         }

@@ -15,8 +15,8 @@ struct LocationHeaderView: View {
         VStack {
             ZStack(alignment:.bottom) {
                 Rectangle()
-                    .fill(.bgSunny)
-                Image(.sunnyHeader)
+                    .fill(locationHeaderViewModel.headerWeatherDisplay.backgroundImage)
+                Image(locationHeaderViewModel.headerWeatherDisplay.image)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .padding(.bottom, 12)

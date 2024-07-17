@@ -20,7 +20,6 @@ class LocationHeaderViewModel: ObservableObject {
     
     init() {
         self.headerWeatherDisplay = HeaderWeatherDisplay(
-            weatherDescription: "Loading Weather...",
             backgroundImage: .bgSunny,
             image: .sunnyHeader
         )
@@ -78,23 +77,22 @@ class LocationHeaderViewModel: ObservableObject {
                 self.weatherDescription = "It's raining right now"
                 self.textColor = .white
                 self.headerWeatherDisplay = HeaderWeatherDisplay(
-                    weatherDescription: "It's raining right now",
-                    backgroundImage: .rain,
-                    image: .sunnyHeader
+                    backgroundImage: .bgRaining,
+                    image: .rainHeader
                 )
             } 
             else if weatherData.rainChance < 40 {
+                self.weatherDescription = "It will be sunny all day"
                 self.headerWeatherDisplay = HeaderWeatherDisplay(
-                    weatherDescription: "It will be sunny all day",
-                    backgroundImage: .sunnyBlue,
+                    backgroundImage: .bgSunny,
                     image: .sunnyHeader
                 )
             } 
             else {
+                self.weatherDescription = "It seems like it's gonna rain"
                 self.headerWeatherDisplay = HeaderWeatherDisplay(
-                    weatherDescription: "It seems like it's gonna rain",
-                    backgroundImage: .willRain,
-                    image: .sunnyHeader
+                    backgroundImage: .bgWillRain,
+                    image: .willRainHeader
                 )
             }
         }

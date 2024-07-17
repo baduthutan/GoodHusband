@@ -12,7 +12,7 @@ import WeatherKit
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private let manager = CLLocationManager()
     @Published var location: CLLocation?
-
+    
     override init() {
         super.init()
         manager.delegate = self
