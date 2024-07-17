@@ -23,7 +23,7 @@ class LocationHeaderViewModel: ObservableObject {
             image: .sunnyHeader
         )
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        weatherViewModel.fetchDailyForecast {
             self.getLocationName()
             self.getWeatherDescription()
         }
