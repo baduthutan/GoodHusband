@@ -86,13 +86,28 @@ struct MapSearchOverlayView: View {
     @Binding var searchText: String
     
     var body: some View {
-        TextField("Search for a location...", text: $searchText)
-            .font(.subheadline)
-            .padding(8)
-            .background(Color.white)
-            .cornerRadius(4)
-            .padding()
-            .shadow(color: .black.opacity(0.2), radius: 2)
+        HStack {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(.secondary)
+                        .padding(.leading, 8)
+
+                    ZStack(alignment: .leading) {
+                        if searchText.isEmpty {
+                            Text("Search for a location...")
+                                .foregroundColor(.secondary)
+                                .padding(.leading, 4)
+                        }
+                        TextField("", text: $searchText)
+                            .foregroundColor(.primary)
+                            .padding(.horizontal,4)
+                    }
+                }
+                .font(.subheadline)
+                .padding(8)
+                .background(Color("BgCard"))
+                .cornerRadius(8)
+                .padding()
+                .shadow(color: .black.opacity(0.2), radius: 2)
     }
 }
 

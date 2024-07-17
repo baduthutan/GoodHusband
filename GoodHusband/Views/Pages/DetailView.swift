@@ -60,11 +60,12 @@ struct DetailView: View {
             .foregroundColor(.white)
             .buttonStyle(.borderedProminent)
             .cornerRadius(8)
-            .padding(.bottom, 16)
+            .padding(.vertical, 16)
             Button("Pin This Information to Homepage") {
                 // TODO add action
             }
         }.padding(.horizontal, 16)
+            .background(Color("BgCard"))
     }
 }
 

@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import SwiftUI
 
 class LocationHeaderViewModel: ObservableObject {
     @Published var location: String = "Loading..."
     @Published var weatherDescription: String = "Loading Weather..."
+    @Published var textColor: Color = .black
     
     private var weatherViewModel = WeatherViewModel.singleton
     
@@ -28,19 +30,16 @@ class LocationHeaderViewModel: ObservableObject {
     
     private func getWeatherDescription() {
         DispatchQueue.main.async {
-            var weatherData: WeatherModel?
-            if !self.weatherViewModel.weatherForecasts.isEmpty{
-                weatherData = self.weatherViewModel.weatherForecasts[0]
-            }
+            let weatherData = self.weatherViewModel.weatherForecasts[0]
             let isRainingNow = self.weatherViewModel.isRainingNow
             
             if isRainingNow {
                 self.weatherDescription = "It's raining right now"
-            } else if (weatherData?.rainChance ?? 0) < 40 {
+                self.textColor = .white
+            } else if weatherData.rainChance < 40 {
                 self.weatherDescription = "It will be sunny all day"
             } else {
                 self.weatherDescription = "It seems like it's gonna rain"
             }
         }
-    }
-}
+    }}

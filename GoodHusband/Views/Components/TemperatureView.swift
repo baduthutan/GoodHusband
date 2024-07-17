@@ -17,13 +17,8 @@ struct TemperatureView: View {
             Image(systemName: weatherImageName)
                 .resizable()
                 .frame(width: 40, height: 40)
-                .foregroundColor(.black)
-            
-            VStack(alignment: .leading) {
-                Text(temperature)
-                    .font(.system(size: 40, weight: .bold))
-            }
-            Spacer()
+            Text(temperature)
+                .font(.system(size: 40, weight: .bold))
         }
     }
 }

@@ -14,6 +14,7 @@ struct DailyWeatherView: View {
         DayWeather(day: "WED", icon: "cloud.rain.fill", temperature: "19°", isActive: false),
         DayWeather(day: "THU", icon: "cloud.bolt.fill", temperature: "19°", isActive: false),
         DayWeather(day: "FRI", icon: "cloud.sun.rain.fill", temperature: "19°", isActive: false),
+        DayWeather(day: "SAT", icon: "cloud.sun.rain.fill", temperature: "19°", isActive: false),
         DayWeather(day: "SAT", icon: "cloud.sun.rain.fill", temperature: "19°", isActive: false)
     ]
     

@@ -13,23 +13,25 @@ struct MainView: View {
     private let mapViewModel = MapViewModel.singleton
     
     var body: some View {
-        ZStack{
-            VStack(spacing: 10) {
-                LocationHeaderView()
-                PinnedLocationView(location: "Summarecon", isRainy: true)
-                Spacer()
+        ScrollView{
+            ZStack{
+                VStack{
+                    LocationHeaderView()
+                        .padding(.bottom,10)
+                    PinnedLocationView(location: "Summarecon", isRainy: true)
+                        .padding(.bottom,0)
+                    OverallForecastView(location: "BSD, Tangerang")
+                    Spacer()
+                }
+                .background(Color("BgPage"))
+                MapView()
+                .padding(.top, 195)
             }
-            .padding(.top)
-            .background(Color(UIColor.systemGroupedBackground))
-            .ignoresSafeArea()
-            MapView()
-                .padding(.top, 140)
         }
-       
+        .ignoresSafeArea()
     }
 }
 
 #Preview {
     MainView()
-    .background(Color("BgPage"))
 }

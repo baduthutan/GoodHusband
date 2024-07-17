@@ -24,24 +24,27 @@ struct DestinationCardView: View {
             VStack(alignment:.leading, spacing: 12){
                     HStack(alignment:.center){
                         Text("\(temperature)°")
+                            .foregroundColor(.black)
                             .font(.system(size: 48))
                             .bold()
                     HStack {
-                        WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(imageName: .rainChance))
-                        WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(imageName: .uvIndex))
-                        WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(imageName: .humidity))
+                        WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(imageName: .rainChance), background: .white.opacity(0.75), foreground: .black)
+                        WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(imageName: .uvIndex),background: .white.opacity(0.75), foreground: .black)
+                        WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(imageName: .humidity),background: .white.opacity(0.75), foreground: .black)
                             Spacer()
                     }
                 }
                 if isPinned == true{
-                    VStack() {
+                    HStack() {
                         Text("Click to see 7-day forecast")
                             .font(.caption)
                             .padding(6.0)
+                        Spacer()
                             
                     }
                     .frame(maxWidth: .infinity)
                     .background(.white.opacity(0.75))
+                    .foregroundColor(.black)
                     .cornerRadius(8)
                 }
                 }

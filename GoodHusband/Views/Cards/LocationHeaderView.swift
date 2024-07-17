@@ -24,14 +24,14 @@ struct LocationHeaderView: View {
                     VStack(alignment: .leading, spacing: 8){
                         Text(locationHeaderViewModel.location)
                             .font(.headline)
-                            .foregroundColor(.primary)
+                            .foregroundColor(locationHeaderViewModel.textColor)
                         Text(locationHeaderViewModel.weatherDescription)
                             .font(.title)
                             .bold()
-                            .foregroundColor(.primary)
+                            .foregroundColor(locationHeaderViewModel.textColor)
                         Text("Set up a location to see how’s there.")
                             .font(.subheadline)
-                            .foregroundColor(.secondary)
+                            .foregroundColor(locationHeaderViewModel.textColor.opacity(0.75))
                     }
                     .padding(.bottom, 10)
                     Spacer()

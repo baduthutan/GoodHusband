@@ -16,7 +16,6 @@ struct PinnedLocationView: View {
                 HStack{
                     Image(systemName: "pin.fill")
                         .font(.system(size: 14))
-                        .foregroundColor(.black)
                     Text("overall forecast in \(location)")
                         .font(.system(size: 11))
                         .textCase(.uppercase)

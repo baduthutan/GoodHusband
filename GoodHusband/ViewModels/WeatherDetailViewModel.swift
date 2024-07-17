@@ -24,7 +24,6 @@ class WeatherDetailViewModel: ObservableObject {
     
     func fetchWeatherDetailValue() {
         let weatherData = weatherViewModel.weatherForecasts[0]
-        
         switch imageName {
         case .rainChance:
             self.value = weatherData.rainChance
