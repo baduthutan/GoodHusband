@@ -43,20 +43,20 @@ class WeatherViewModel: ObservableObject {
         }
     }
     
-//    func fetchWeather() {
-//        Task {
-//            do {
-//                if let location = locationManager.location {
-//                    let weatherModel = try await weatherManager.fetchWeather(location: location)
-//                    DispatchQueue.main.async {
-//                        self.weatherModel = weatherModel
-//                    }
-//                }
-//            } catch {
-//                print("Failed to get weather data. \(error)")
-//            }
-//        }
-//    }
+    func fetchWeather() {
+        Task {
+            do {
+                if let location = locationManager.location {
+                    let weatherModel = try await weatherManager.fetchWeather(location: location)
+                    DispatchQueue.main.async {
+                        self.weatherModel = weatherModel
+                    }
+                }
+            } catch {
+                print("Failed to get weather data. \(error)")
+            }
+        }
+    }
     
     func fetchDailyForecast(completion: @escaping() -> Void) {
         if weatherForecasts.isEmpty {

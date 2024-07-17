@@ -39,7 +39,7 @@ struct MapView: View {
                             mapSelection = item
                             showSearchResults = false
                             isMapSelected = true
-                            weatherViewModel.fetchWeather() // Fetch weather for the selected location
+                            weatherViewModel.fetchWeather()
                         }) {
                             VStack(alignment: .leading) {
                                 Text(item.placemark.name ?? "Unknown Place")
