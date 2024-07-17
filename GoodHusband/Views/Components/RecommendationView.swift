@@ -27,7 +27,6 @@ struct RecommendationView: View {
                 
                 Text(description)
                     .font(.caption)
-                    .foregroundColor(.gray)
             }
             Spacer()
         }
