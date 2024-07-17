@@ -6,14 +6,23 @@
 //
 
 import Foundation
+import CoreLocation
 
 class LocationHeaderViewModel: ObservableObject {
     @Published var location: String = "Loading..."
+    @Published var headerWeatherDisplay: HeaderWeatherDisplay
     @Published var weatherDescription: String = "Loading Weather..."
     
-    private var weatherViewModel = WeatherViewModel.singleton
+    private let weatherViewModel = WeatherViewModel.singleton
+    private let locationManager = LocationManager()
     
     init() {
+        self.headerWeatherDisplay = HeaderWeatherDisplay(
+            weatherDescription: "Loading Weather...",
+            backgroundImage: .sunnyBlue,
+            image: .sunnyHeader
+        )
+        
         weatherViewModel.fetchDailyForecast {
             self.getLocationName()
             self.getWeatherDescription()
@@ -21,10 +30,42 @@ class LocationHeaderViewModel: ObservableObject {
     }
     
     private func getLocationName() {
-        DispatchQueue.main.async {
-            self.location = "Placeholder Location"
+        locationManager.requestLocation { result in
+            switch result {
+            case .success(let location):
+                self.reverseGeocodeLocation(location) { locationString in
+                    DispatchQueue.main.async {
+                        self.location = locationString
+                    }
+                }
+            case .failure(let error):
+                print("Failed to get location: \(error.localizedDescription)")
+                self.location = "Failed to get location"
+            }
         }
     }
+    
+    private func reverseGeocodeLocation(_ location: CLLocation, completion: @escaping (String) -> Void) {
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(location) { placemarks, error in
+            if let error = error {
+                print("Failed to reverse geocode location: \(error.localizedDescription)")
+                completion("Failed to get location")
+                return
+            }
+            
+            if let placemark = placemarks?.first {
+                let locality = placemark.locality ?? ""
+                let administrativeArea = placemark.administrativeArea ?? ""
+                
+                let locationString = "\(locality), \(administrativeArea)"
+                completion(locationString)
+            } else {
+                completion("Unknown Location")
+            }
+        }
+    }
+    
     
     private func getWeatherDescription() {
         DispatchQueue.main.async {
@@ -33,10 +74,27 @@ class LocationHeaderViewModel: ObservableObject {
             
             if isRainingNow {
                 self.weatherDescription = "It's raining right now"
-            } else if weatherData.rainChance < 40 {
+                self.headerWeatherDisplay = HeaderWeatherDisplay(
+                    weatherDescription: "It's raining right now",
+                    backgroundImage: .rain,
+                    image: .sunnyHeader
+                )
+            } 
+            else if weatherData.rainChance < 40 {
                 self.weatherDescription = "It will be sunny all day"
-            } else {
+                self.headerWeatherDisplay = HeaderWeatherDisplay(
+                    weatherDescription: "It will be sunny all day",
+                    backgroundImage: .sunnyBlue,
+                    image: .sunnyHeader
+                )
+            } 
+            else {
                 self.weatherDescription = "It seems like it's gonna rain"
+                self.headerWeatherDisplay = HeaderWeatherDisplay(
+                    weatherDescription: "It seems like it's gonna rain",
+                    backgroundImage: .willRain,
+                    image: .sunnyHeader
+                )
             }
         }
     }
