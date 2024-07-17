@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct TemperatureView: View {
-    var weatherImageName: String
-    var temperature: String
-    var location: String
+    
+    @ObservedObject var temperatureViewModel: TemperatureViewModel
     
     var body: some View {
         HStack {
-            Image(systemName: weatherImageName)
+            Image(systemName: temperatureViewModel.weatherImageName)
                 .resizable()
                 .frame(width: 40, height: 40)
-            Text(temperature)
+            Text("\(temperatureViewModel.temperature)°")
                 .font(.system(size: 40, weight: .bold))
         }
     }
@@ -25,7 +24,7 @@ struct TemperatureView: View {
 
 struct TemperatureView_Previews: PreviewProvider {
     static var previews: some View {
-        TemperatureView(weatherImageName: "cloud.rain.fill", temperature: "20°", location: "Serpong, Tangerang")
+        TemperatureView(temperatureViewModel: TemperatureViewModel(weatherImageName: "cloud.rain.fill", temperature: 20))
             .previewLayout(.sizeThatFits)
     }
 }
