@@ -15,8 +15,6 @@ struct ContentView: View {
         MainView()
             .onAppear {
                 Task {
-                    weatherViewModel.fetchWeather()
-                    weatherViewModel.fetchDailyForecast()
                     weatherViewModel.fetchIsRainingNow()
                 }
             }
