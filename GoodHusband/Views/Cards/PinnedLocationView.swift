@@ -56,7 +56,7 @@ struct PinnedLocationView: View {
             .padding()
         }
         .frame(maxWidth: .infinity)
-        .background(.white)
+        .background(Color("BgCard"))
         .cornerRadius(10)
         .padding()
         .shadow(color: .black.opacity(0.2), radius: 2)

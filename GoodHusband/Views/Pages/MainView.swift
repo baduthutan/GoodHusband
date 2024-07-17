@@ -25,9 +25,11 @@ struct MainView: View {
             MapView()
                 .padding(.top, 140)
         }
+       
     }
 }
 
 #Preview {
     MainView()
+    .background(Color("BgPage"))
 }

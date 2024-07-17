@@ -15,7 +15,7 @@ struct LocationHeaderView: View {
         VStack {
             ZStack(alignment:.bottom) {
                 Rectangle()
-                    .fill(.sunnyBlue)
+                    .fill(.bgSunny)
                 Image(.sunnyHeader)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -40,7 +40,7 @@ struct LocationHeaderView: View {
                 .padding(.vertical, 36)
                 Rectangle()
                     .fill(
-                        LinearGradient(gradient: Gradient(colors: [.sunnyBlue, .secondary]), startPoint: .top, endPoint: .bottom)
+                        LinearGradient(gradient: Gradient(colors: [.bgSunny, .secondary]), startPoint: .top, endPoint: .bottom)
                         )
                     .opacity(0.3)
                     .frame(height: 10)

@@ -12,6 +12,7 @@ struct DayWeather: Identifiable {
     let day: String
     let icon: String
     let temperature: String
+    let isActive: Bool
 }
 
 struct DayWeatherView: View {
@@ -27,6 +28,21 @@ struct DayWeatherView: View {
                 .aspectRatio(contentMode: .fit)
             Text(dayWeather.temperature)
                 .font(.system(size: 15))
+            
+            VStack(spacing: 0.0) {
+                if dayWeather.isActive {
+                    Rectangle()
+                        .fill(.primary)
+                        .frame(height: 2)
+                }else{
+                    Rectangle()
+                        .fill(Color("BgCard"))
+                        .frame(height: 2)
+                }
+                Rectangle()
+                    .fill(.secondary)
+                .frame(height: 2)
+            }
         }
         .frame(width: 52, height: 86)
     }
@@ -37,7 +53,7 @@ struct DayWeatherView: View {
         dayWeather: DayWeather(
             day: "Today",
             icon: "sun.max.fill",
-            temperature: "29°"
+            temperature: "29°", isActive: true
         )
     )
 }

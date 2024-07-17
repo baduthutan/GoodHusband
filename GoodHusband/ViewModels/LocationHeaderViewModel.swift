@@ -28,12 +28,15 @@ class LocationHeaderViewModel: ObservableObject {
     
     private func getWeatherDescription() {
         DispatchQueue.main.async {
-            let weatherData = self.weatherViewModel.weatherForecasts[0]
+            var weatherData: WeatherModel?
+            if !self.weatherViewModel.weatherForecasts.isEmpty{
+                weatherData = self.weatherViewModel.weatherForecasts[0]
+            }
             let isRainingNow = self.weatherViewModel.isRainingNow
             
             if isRainingNow {
                 self.weatherDescription = "It's raining right now"
-            } else if weatherData.rainChance < 40 {
+            } else if (weatherData?.rainChance ?? 0) < 40 {
                 self.weatherDescription = "It will be sunny all day"
             } else {
                 self.weatherDescription = "It seems like it's gonna rain"
