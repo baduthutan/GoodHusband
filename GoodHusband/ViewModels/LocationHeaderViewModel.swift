@@ -6,12 +6,14 @@
 //
 
 import Foundation
+import SwiftUI
 import CoreLocation
 
 class LocationHeaderViewModel: ObservableObject {
     @Published var location: String = "Loading..."
     @Published var headerWeatherDisplay: HeaderWeatherDisplay
     @Published var weatherDescription: String = "Loading Weather..."
+    @Published var textColor: Color = .black
     
     private let weatherViewModel = WeatherViewModel.singleton
     private let locationManager = LocationManager()
@@ -19,7 +21,7 @@ class LocationHeaderViewModel: ObservableObject {
     init() {
         self.headerWeatherDisplay = HeaderWeatherDisplay(
             weatherDescription: "Loading Weather...",
-            backgroundImage: .sunnyBlue,
+            backgroundImage: .bgSunny,
             image: .sunnyHeader
         )
         
@@ -74,6 +76,7 @@ class LocationHeaderViewModel: ObservableObject {
             
             if isRainingNow {
                 self.weatherDescription = "It's raining right now"
+                self.textColor = .white
                 self.headerWeatherDisplay = HeaderWeatherDisplay(
                     weatherDescription: "It's raining right now",
                     backgroundImage: .rain,
@@ -84,7 +87,7 @@ class LocationHeaderViewModel: ObservableObject {
                 self.weatherDescription = "It will be sunny all day"
                 self.headerWeatherDisplay = HeaderWeatherDisplay(
                     weatherDescription: "It will be sunny all day",
-                    backgroundImage: .sunnyBlue,
+                    backgroundImage: .bgSunny,
                     image: .sunnyHeader
                 )
             } 
@@ -97,5 +100,4 @@ class LocationHeaderViewModel: ObservableObject {
                 )
             }
         }
-    }
-}
+    }}

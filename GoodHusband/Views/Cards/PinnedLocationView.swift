@@ -18,7 +18,6 @@ struct PinnedLocationView: View {
                 HStack{
                     Image(systemName: "pin.fill")
                         .font(.system(size: 14))
-                        .foregroundColor(.black)
                     Text("overall forecast in \(location)")
                         .font(.system(size: 11))
                         .textCase(.uppercase)
@@ -58,7 +57,7 @@ struct PinnedLocationView: View {
             .padding()
         }
         .frame(maxWidth: .infinity)
-        .background(.white)
+        .background(Color("BgCard"))
         .cornerRadius(10)
         .padding()
         .shadow(color: .black.opacity(0.2), radius: 2)

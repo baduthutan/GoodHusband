@@ -15,8 +15,8 @@ struct LocationHeaderView: View {
         VStack {
             ZStack(alignment:.bottom) {
                 Rectangle()
-                    .fill(locationHeaderViewModel.headerWeatherDisplay.backgroundImage)
-                Image(locationHeaderViewModel.headerWeatherDisplay.image)
+                    .fill(.bgSunny)
+                Image(.sunnyHeader)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .padding(.bottom, 12)
@@ -27,11 +27,14 @@ struct LocationHeaderView: View {
                             Text(locationHeaderViewModel.location)
                         })
                         .font(.subheadline)
-                        .foregroundColor(.primary)
+                        .foregroundColor(locationHeaderViewModel.textColor)
                         Text(locationHeaderViewModel.weatherDescription)
                             .font(.title)
                             .bold()
-                            .foregroundColor(.primary)
+                            .foregroundColor(locationHeaderViewModel.textColor)
+                        Text("Set up a location to see how’s there.")
+                            .font(.subheadline)
+                            .foregroundColor(locationHeaderViewModel.textColor.opacity(0.75))
                     }
                     .padding(.bottom, 10)
                     Spacer()
@@ -40,7 +43,7 @@ struct LocationHeaderView: View {
                 .padding(.vertical, 36)
                 Rectangle()
                     .fill(
-                        LinearGradient(gradient: Gradient(colors: [.sunnyBlue, .secondary]), startPoint: .top, endPoint: .bottom)
+                        LinearGradient(gradient: Gradient(colors: [.bgSunny, .secondary]), startPoint: .top, endPoint: .bottom)
                         )
                     .opacity(0.3)
                     .frame(height: 10)

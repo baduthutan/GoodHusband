@@ -22,6 +22,7 @@
 		1A30D5502C46609900059D5F /* RecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30D54D2C46609900059D5F /* RecommendationView.swift */; };
 		1A30D5512C46609900059D5F /* TemperatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30D54E2C46609900059D5F /* TemperatureView.swift */; };
 		1A30D5542C46669700059D5F /* PinnedLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30D5532C46669700059D5F /* PinnedLocationView.swift */; };
+		1A30D5592C47B76500059D5F /* OverallForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30D5582C47B76500059D5F /* OverallForecastView.swift */; };
 		263D2A6C2C4685D300BA8674 /* WeatherDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263D2A6B2C4685D300BA8674 /* WeatherDetailViewModel.swift */; };
 		263D2A6E2C46AD6800BA8674 /* LocationHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263D2A6D2C46AD6800BA8674 /* LocationHeaderViewModel.swift */; };
 		263D2A712C479FF500BA8674 /* WeatherDataEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263D2A702C479FF500BA8674 /* WeatherDataEnums.swift */; };
@@ -55,6 +56,8 @@
 		1A30D54D2C46609900059D5F /* RecommendationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationView.swift; sourceTree = "<group>"; };
 		1A30D54E2C46609900059D5F /* TemperatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemperatureView.swift; sourceTree = "<group>"; };
 		1A30D5532C46669700059D5F /* PinnedLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedLocationView.swift; sourceTree = "<group>"; };
+		1A30D5572C47A28200059D5F /* GoodHusbandDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoodHusbandDebug.entitlements; sourceTree = "<group>"; };
+		1A30D5582C47B76500059D5F /* OverallForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverallForecastView.swift; sourceTree = "<group>"; };
 		263D2A6B2C4685D300BA8674 /* WeatherDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewModel.swift; sourceTree = "<group>"; };
 		263D2A6D2C46AD6800BA8674 /* LocationHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHeaderViewModel.swift; sourceTree = "<group>"; };
 		263D2A702C479FF500BA8674 /* WeatherDataEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataEnums.swift; sourceTree = "<group>"; };
@@ -105,7 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				D034BE4E2C471AF3003CBD88 /* Type */,
-				D034BE4C2C4712D3003CBD88 /* GoodHusband.entitlements */,
+				1A30D5572C47A28200059D5F /* GoodHusbandDebug.entitlements */,
 				1A30D54B2C46534800059D5F /* GoodHusbandRelease.entitlements */,
 				1A30D50C2C3D2AAA00059D5F /* GoodHusbandApp.swift */,
 				263D2A6F2C479FC300BA8674 /* Enums */,
@@ -210,6 +213,7 @@
 				1A30D53F2C423C9C00059D5F /* DestinationCardView.swift */,
 				1A30D5532C46669700059D5F /* PinnedLocationView.swift */,
 				57E5038A2C45D4B3004D3509 /* DailyWeatherView.swift */,
+				1A30D5582C47B76500059D5F /* OverallForecastView.swift */,
 				573C84D42C4667E3008825AC /* DayWeatherView.swift */,
 			);
 			path = Cards;
@@ -304,6 +308,7 @@
 				1A30D5502C46609900059D5F /* RecommendationView.swift in Sources */,
 				1A30D5342C3D2BF800059D5F /* LocationManager.swift in Sources */,
 				1A30D53E2C423B7100059D5F /* MainView.swift in Sources */,
+				1A30D5592C47B76500059D5F /* OverallForecastView.swift in Sources */,
 				1A30D54F2C46609900059D5F /* WeatherDetailView.swift in Sources */,
 				263D2A6C2C4685D300BA8674 /* WeatherDetailViewModel.swift in Sources */,
 				57E5038B2C45D4B3004D3509 /* DailyWeatherView.swift in Sources */,
@@ -451,11 +456,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = GoodHusband/GoodHusband.entitlements;
+				CODE_SIGN_ENTITLEMENTS = GoodHusband/GoodHusbandDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GoodHusband/Preview Content\"";
-				DEVELOPMENT_TEAM = H84M48MBJL;
+				DEVELOPMENT_TEAM = 6NVYJU48V6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Sunny Side";
@@ -473,7 +478,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Agfi.WeatherKit;
+				PRODUCT_BUNDLE_IDENTIFIER = vinchenamigo.SunnySetUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -491,7 +496,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GoodHusband/Preview Content\"";
-				DEVELOPMENT_TEAM = H84M48MBJL;
+				DEVELOPMENT_TEAM = 6NVYJU48V6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Sunny Side";
@@ -509,7 +514,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Agfi.WeatherKit;
+				PRODUCT_BUNDLE_IDENTIFIER = vinchenamigo.SunnySetUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
