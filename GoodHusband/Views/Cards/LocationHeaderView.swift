@@ -15,23 +15,23 @@ struct LocationHeaderView: View {
         VStack {
             ZStack(alignment:.bottom) {
                 Rectangle()
-                    .fill(.bgSunny)
-                Image(.sunnyHeader)
+                    .fill(locationHeaderViewModel.headerWeatherDisplay.backgroundImage)
+                Image(locationHeaderViewModel.headerWeatherDisplay.image)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .padding(.bottom, 12)
                 HStack{
                     VStack(alignment: .leading, spacing: 8){
-                        Text(locationHeaderViewModel.location)
-                            .font(.headline)
-                            .foregroundColor(locationHeaderViewModel.textColor)
+                        HStack(alignment: .top, spacing: 4, content: {
+                            Image(systemName: "location")
+                            Text(locationHeaderViewModel.location)
+                                .font(.headline)
+                                .foregroundColor(locationHeaderViewModel.textColor)
+                        })
                         Text(locationHeaderViewModel.weatherDescription)
                             .font(.title)
                             .bold()
                             .foregroundColor(locationHeaderViewModel.textColor)
-                        Text("Set up a location to see how’s there.")
-                            .font(.subheadline)
-                            .foregroundColor(locationHeaderViewModel.textColor.opacity(0.75))
                     }
                     .padding(.bottom, 10)
                     Spacer()
@@ -50,6 +50,10 @@ struct LocationHeaderView: View {
         }
         .ignoresSafeArea(.all)
     }
+}
+
+#Preview {
+    ContentView()
 }
 
 
