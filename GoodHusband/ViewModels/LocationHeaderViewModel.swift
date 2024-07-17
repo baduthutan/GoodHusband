@@ -11,10 +11,10 @@ class LocationHeaderViewModel: ObservableObject {
     @Published var location: String = "Loading..."
     @Published var weatherDescription: String = "Loading Weather..."
     
-    private let weatherViewModel = WeatherViewModel.singleton
+    private var weatherViewModel = WeatherViewModel.singleton
     
     init() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        weatherViewModel.fetchDailyForecast {
             self.getLocationName()
             self.getWeatherDescription()
         }

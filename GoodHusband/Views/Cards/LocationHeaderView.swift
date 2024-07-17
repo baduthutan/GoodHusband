@@ -52,8 +52,4 @@ struct LocationHeaderView: View {
     }
 }
 
-#Preview {
-    MainView()
-}
-
 
