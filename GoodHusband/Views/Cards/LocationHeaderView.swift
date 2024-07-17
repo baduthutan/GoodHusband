@@ -21,10 +21,13 @@ struct LocationHeaderView: View {
                     .aspectRatio(contentMode: .fit)
                     .padding(.bottom, 12)
                 HStack{
-                    VStack(alignment: .leading, spacing: 8){
-                        Text(locationHeaderViewModel.location)
-                            .font(.headline)
-                            .foregroundColor(locationHeaderViewModel.textColor)
+                    VStack(alignment: .leading, spacing: 8) {
+                        HStack(alignment: .top, spacing: 4, content: {
+                            Image(systemName: "location")
+                            Text(locationHeaderViewModel.location)
+                        })
+                        .font(.subheadline)
+                        .foregroundColor(locationHeaderViewModel.textColor)
                         Text(locationHeaderViewModel.weatherDescription)
                             .font(.title)
                             .bold()
@@ -50,6 +53,10 @@ struct LocationHeaderView: View {
         }
         .ignoresSafeArea(.all)
     }
+}
+
+#Preview {
+    ContentView()
 }
 
 

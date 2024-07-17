@@ -111,6 +111,9 @@
         }
       }
     },
+    "Favorite Locations" : {
+
+    },
     "Favourite destination" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -275,6 +278,9 @@
         }
       }
     },
+    "Remove from Homepage" : {
+
+    },
     "Sat" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -415,6 +421,9 @@
           }
         }
       }
+    },
+    "weatherConditionDesc" : {
+
     },
     "Wed" : {
       "extractionState" : "manual",
