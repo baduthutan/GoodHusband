@@ -7,30 +7,22 @@
 
 import SwiftUI
 
-struct DayWeather: Identifiable {
-    let id = UUID()
-    let day: String
-    let icon: String
-    let temperature: String
-    let isActive: Bool
-}
-
 struct DayWeatherView: View {
-    var dayWeather: DayWeather
+    @ObservedObject var dayWeatherViewModel: DayWeatherViewModel
     
     var body: some View {
         VStack(spacing: 8) {
-            Text(dayWeather.day)
+            Text(dayWeatherViewModel.dayWeather.day)
                 .font(.system(size: 15))
-            Image(systemName: dayWeather.icon)
+            Image(systemName: dayWeatherViewModel.dayWeather.symbol)
                 .resizable()
                 .frame(width: 24, height: 24)
                 .aspectRatio(contentMode: .fit)
-            Text(dayWeather.temperature)
+            Text("\(dayWeatherViewModel.dayWeather.temperature)°")
                 .font(.system(size: 15))
             
             VStack(spacing: 0.0) {
-                if dayWeather.isActive {
+                if dayWeatherViewModel.dayWeather.isActive {
                     Rectangle()
                         .fill(.primary)
                         .frame(height: 2)
@@ -41,7 +33,7 @@ struct DayWeatherView: View {
                 }
                 Rectangle()
                     .fill(.secondary)
-                .frame(height: 2)
+                    .frame(height: 2)
             }
         }
         .frame(width: 52, height: 86)
@@ -50,10 +42,13 @@ struct DayWeatherView: View {
 
 #Preview {
     DayWeatherView(
-        dayWeather: DayWeather(
-            day: "Today",
-            icon: "sun.max.fill",
-            temperature: "29°", isActive: true
+        dayWeatherViewModel: DayWeatherViewModel(
+            dayWeather: DayWeatherModel(
+                day: "Today",
+                symbol: "sun.max.fill",
+                temperature: 29,
+                isActive: true
+            )
         )
     )
 }
