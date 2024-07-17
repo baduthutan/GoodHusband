@@ -10,8 +10,6 @@ import SwiftUI
 struct PinnedLocationView: View {
     var location: String
     var isRainy: Bool
-    var weatherModel: WeatherModel
-    
     var body: some View {
         VStack{
             VStack(spacing: 12.0){
@@ -33,7 +31,7 @@ struct PinnedLocationView: View {
                     .foregroundColor(.red)
                     .cornerRadius(8)
                 }
-                DestinationCardView(temperature: weatherModel.temperature, rainChance: weatherModel.rainChance, uvIndex: weatherModel.uvIndex, humidity: weatherModel.humidity, isPinned: true)
+                DestinationCardView(temperature: 28, rainChance: 50, uvIndex: 5, humidity: 52, isPinned: true)
                 if isRainy == true{
                     HStack() {
                         Image(systemName: "cloud.fill")
@@ -65,5 +63,5 @@ struct PinnedLocationView: View {
 }
 
 #Preview {
-    ContentView()
+    PinnedLocationView(location: "Summarecon", isRainy: true)
 }

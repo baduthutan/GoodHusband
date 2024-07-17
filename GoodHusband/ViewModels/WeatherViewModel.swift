@@ -13,7 +13,6 @@ class WeatherViewModel: ObservableObject {
     @Published var weatherModel: WeatherModel?
     @Published var weatherForecasts: [WeatherModel] = []
     @Published var isRainingNow: Bool = false
-    @Published var weatherForecastsDestination: [WeatherModel] = []
     
     private var weatherManager = WeatherManager()
     private var locationManager = LocationManager()
@@ -43,20 +42,20 @@ class WeatherViewModel: ObservableObject {
         }
     }
     
-    func fetchWeather() {
-        Task {
-            do {
-                if let location = locationManager.location {
-                    let weatherModel = try await weatherManager.fetchWeather(location: location)
-                    DispatchQueue.main.async {
-                        self.weatherModel = weatherModel
-                    }
-                }
-            } catch {
-                print("Failed to get weather data. \(error)")
-            }
-        }
-    }
+//    func fetchWeather() {
+//        Task {
+//            do {
+//                if let location = locationManager.location {
+//                    let weatherModel = try await weatherManager.fetchWeather(location: location)
+//                    DispatchQueue.main.async {
+//                        self.weatherModel = weatherModel
+//                    }
+//                }
+//            } catch {
+//                print("Failed to get weather data. \(error)")
+//            }
+//        }
+//    }
     
     func fetchDailyForecast(completion: @escaping() -> Void) {
         if weatherForecasts.isEmpty {
@@ -76,18 +75,6 @@ class WeatherViewModel: ObservableObject {
             }
         }
     }
-    
-    func fetchWeeklyForecast(for latitude: Double, longitude: Double) {
-        Task {
-            do {
-                let location = CLLocation(latitude: latitude, longitude: longitude)
-                let weatherForecastsDestination = try await weatherManager.fetchWeatherForecast(location: location)
-                DispatchQueue.main.async {
-                    self.weatherForecastsDestination = weatherForecastsDestination
-                }
-            } catch {
-                print("Failed to get weather data. \(error)")
-            }
-        }
-    }
 }
+
+
