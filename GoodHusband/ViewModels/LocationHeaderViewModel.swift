@@ -69,31 +69,30 @@ class LocationHeaderViewModel: ObservableObject {
     
     
     private func getWeatherDescription() {
-        DispatchQueue.main.async {
-            let weatherData = self.weatherViewModel.weatherForecasts[0]
-            let isRainingNow = self.weatherViewModel.isRainingNow
-            
-            if isRainingNow {
-                self.weatherDescription = "It's raining right now"
-                self.textColor = .white
-                self.headerWeatherDisplay = HeaderWeatherDisplay(
-                    backgroundImage: .bgRaining,
-                    image: .rainHeader
-                )
-            } 
-            else if weatherData.rainChance < 40 {
-                self.weatherDescription = "It will be sunny all day"
-                self.headerWeatherDisplay = HeaderWeatherDisplay(
-                    backgroundImage: .bgSunny,
-                    image: .sunnyHeader
-                )
-            } 
-            else {
-                self.weatherDescription = "It seems like it's gonna rain"
-                self.headerWeatherDisplay = HeaderWeatherDisplay(
-                    backgroundImage: .bgWillRain,
-                    image: .willRainHeader
-                )
-            }
+        let weatherData = self.weatherViewModel.weatherForecasts[0]
+        let isRainingNow = self.weatherViewModel.isRainingNow
+        
+        if isRainingNow {
+            self.weatherDescription = "It's raining right now"
+            self.textColor = .white
+            self.headerWeatherDisplay = HeaderWeatherDisplay(
+                backgroundImage: .bgRaining,
+                image: .rainHeader
+            )
         }
-    }}
+        else if weatherData.rainChance < 40 {
+            self.weatherDescription = "It will be sunny all day"
+            self.headerWeatherDisplay = HeaderWeatherDisplay(
+                backgroundImage: .bgSunny,
+                image: .sunnyHeader
+            )
+        }
+        else {
+            self.weatherDescription = "It seems like it's gonna rain"
+            self.headerWeatherDisplay = HeaderWeatherDisplay(
+                backgroundImage: .bgWillRain,
+                image: .willRainHeader
+            )
+        }
+    }
+}

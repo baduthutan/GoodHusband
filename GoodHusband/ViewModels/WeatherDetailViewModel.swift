@@ -16,8 +16,7 @@ class WeatherDetailViewModel: ObservableObject {
     init(imageName: WeatherDataEnums) {
         self.imageName = imageName
         self.value = 0
-        
-        weatherViewModel.fetchIsRainingNow()
+
         weatherViewModel.fetchDailyForecast {
             self.fetchWeatherDetailValue()
         }
@@ -33,7 +32,5 @@ class WeatherDetailViewModel: ObservableObject {
         case .humidity:
             self.value = weatherData.humidity
         }
-        
     }
-    
 }
