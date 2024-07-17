@@ -8,15 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    private let weatherViewModel = WeatherViewModel.singleton
-    private let mapViewModel = MapViewModel.singleton
+    @ObservedObject var weatherViewModel = WeatherViewModel.singleton
     
     var body: some View {
-//        DetailView(
-//            location: "Summarecon, Bekasi",
-//            weatherCondition: "It’s Sunny all day!",
-//            weatherConditionDesc: "It doesn’t seem like going to rain there today."
-//        )
         MainView()
             .onAppear {
                 Task {
