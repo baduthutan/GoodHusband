@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PinnedLocationView: View {
+    var favorite: FavoriteLocation
     var location: String
     var isRainy: Bool
     var weatherModel: WeatherModel
@@ -33,7 +34,24 @@ struct PinnedLocationView: View {
                     .foregroundColor(.red)
                     .cornerRadius(8)
                 }
-                DestinationCardView(temperature: weatherModel.temperature, rainChance: weatherModel.rainChance, uvIndex: weatherModel.uvIndex, humidity: weatherModel.humidity, isPinned: true)
+                NavigationLink(destination: {
+                    DetailView(
+                        location: favorite.name,
+                        address: favorite.address,
+                        latitude: favorite.latitude,
+                        longitude: favorite.longitude,
+                        weatherModel: WeatherModel(
+                            date: Date(),
+                            conditionSymbolName: favorite.weatherCondition,
+                            temperature: Int(favorite.temperature),
+                            rainChance: favorite.rainChance,
+                            uvIndex: favorite.uvIndex,
+                            humidity: favorite.humidity
+                        )
+                    )
+                }, label: {
+                    DestinationCardView(temperature: weatherModel.temperature, rainChance: weatherModel.rainChance, uvIndex: weatherModel.uvIndex, humidity: weatherModel.humidity, isPinned: true)
+                })
                 if isRainy == true{
                     HStack() {
                         Image(systemName: "cloud.fill")

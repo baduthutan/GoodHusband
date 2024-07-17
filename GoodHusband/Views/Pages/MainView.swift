@@ -20,24 +20,7 @@ struct MainView: View {
                         LocationHeaderView()
                         if !favoritesManager.favorites.isEmpty {
                                 ForEach(favoritesManager.favorites) { favorite in
-                                        NavigationLink(destination: {
-                                            DetailView(
-                                                location: favorite.name,
-                                                address: favorite.address,
-                                                latitude: favorite.latitude,
-                                                longitude: favorite.longitude,
-                                                weatherModel: WeatherModel(
-                                                    date: Date(),
-                                                    conditionSymbolName: favorite.weatherCondition,
-                                                    temperature: Int(favorite.temperature),
-                                                    rainChance: favorite.rainChance,
-                                                    uvIndex: favorite.uvIndex,
-                                                    humidity: favorite.humidity
-                                                )
-                                            )
-                                        }, label: {
-                                            PinnedLocationView(location: favorite.name, isRainy: true, weatherModel: WeatherModel(date: Date(), conditionSymbolName: favorite.weatherCondition, temperature: Int(favorite.temperature), rainChance: favorite.rainChance, uvIndex: favorite.uvIndex, humidity: favorite.humidity))
-                                        })
+                                    PinnedLocationView(favorite: favorite, location: favorite.name, isRainy: true, weatherModel: WeatherModel(date: Date(), conditionSymbolName: favorite.weatherCondition, temperature: Int(favorite.temperature), rainChance: favorite.rainChance, uvIndex: favorite.uvIndex, humidity: favorite.humidity))
                                 }
                         }
                         OverallForecastView(location: "BSD, Tangerang")
