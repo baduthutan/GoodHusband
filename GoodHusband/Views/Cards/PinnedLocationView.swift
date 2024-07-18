@@ -50,7 +50,7 @@ struct PinnedLocationView: View {
                         )
                     )
                 }, label: {
-                    DestinationCardView(temperature: weatherModel.temperature, rainChance: weatherModel.rainChance, uvIndex: weatherModel.uvIndex, humidity: weatherModel.humidity, isPinned: true)
+                    DestinationCardView(temperature: Int(favorite.temperature), rainChance: favorite.rainChance, uvIndex: favorite.uvIndex, humidity: favorite.humidity, isPinned: true)
                 })
                 if isRainy == true{
                     HStack() {

@@ -16,8 +16,10 @@ class OverallForecastViewModel: ObservableObject {
     
     private let weatherViewModel = WeatherViewModel.singleton
     private let locationManager = LocationManager()
+    private var index: Int
     
-    init() {
+    init(index: Int) {
+        self.index = index
         weatherViewModel.fetchDailyForecast {
             self.getLocationName()
             self.getTemperatureData()
@@ -63,14 +65,16 @@ class OverallForecastViewModel: ObservableObject {
     }
     
     private func getTemperatureData() {
-        let weatherData = self.weatherViewModel.weatherForecasts[0]
+        guard index < weatherViewModel.weatherForecasts.count else { return }
+        let weatherData = weatherViewModel.weatherForecasts[index]
         
         self.temperature = weatherData.temperature
         self.weatherImageName = weatherData.conditionSymbolName
     }
     
     private func getRecommendations() {
-        let weatherData = self.weatherViewModel.weatherForecasts[0]
+        guard index < weatherViewModel.weatherForecasts.count else { return }
+        let weatherData = weatherViewModel.weatherForecasts[index]
         
         appendTemperatureRecommendations(for: weatherData)
         appendUVIndexRecommendation(for: weatherData)
