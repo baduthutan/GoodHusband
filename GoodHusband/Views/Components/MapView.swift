@@ -11,10 +11,7 @@ import CoreLocation
 import MapKit
 
 struct MapView: View {
-    @State var mapSelection: MKMapItem?
-    @State var isMapSelected: Bool = false
-    @State private var showSearchResults = false
-    @State private var isNavigatingToDetail = false
+    @State private var showSearchBar = false
     
     @ObservedObject var mapViewModel = MapViewModel.singleton
     @ObservedObject var weatherViewModel = WeatherViewModel.singleton
@@ -22,52 +19,12 @@ struct MapView: View {
     var body: some View {
         ZStack {
             VStack {
-                MapSearchOverlayView(searchText: $mapViewModel.searchText)
-                    .onSubmit(of: .text) {
-                        Task {
-                            await mapViewModel.searchPlaces()
-                            showSearchResults = true
-                        }
-                    }
-                    .onChange(of: mapSelection, { oldValue, newValue in
-                        mapViewModel.showDetails = newValue != nil
-                    })
+                MapSearchOverlayView(showSearchBar: $showSearchBar)
                 Spacer()
-                if showSearchResults {
-                    List(mapViewModel.results, id: \.self) { item in
-                        Button(action: {
-                            mapSelection = item
-                            showSearchResults = false
-                            isMapSelected = true
-                            weatherViewModel.fetchWeather()
-                        }) {
-                            VStack(alignment: .leading) {
-                                Text(item.placemark.name ?? "Unknown Place")
-                                    .font(.headline)
-                                Text(item.placemark.title ?? "No address available")
-                                    .font(.caption)
-                            }
-                        }
-                    }
-                }
             }
-            .sheet(isPresented: $isMapSelected) {
-                if let mapSelection = mapSelection,
-                   let location = mapSelection.placemark.name,
-                   let administrativeArea = mapSelection.placemark.administrativeArea,
-                   let latitude = mapSelection.placemark.location?.coordinate.latitude,
-                   let longitude = mapSelection.placemark.location?.coordinate.longitude,
-                   let weatherModel = weatherViewModel.weatherModel {
-                    
-                    DetailView(
-                        location: location,
-                        address: "\(location), \(administrativeArea)",
-                        latitude: latitude,
-                        longitude: longitude,
-                        weatherModel: weatherModel
-                    )
-                }
-            }
+            .sheet(isPresented: $showSearchBar, content: {
+                LocationSearchView(searchText: $mapViewModel.searchText, showSearchBar: $showSearchBar)
+            })
         }
     }
 }
@@ -99,31 +56,30 @@ struct MapAnnotationView: View {
 }
 
 struct MapSearchOverlayView: View {
-    @Binding var searchText: String
-    
+    @Binding var showSearchBar: Bool
     var body: some View {
         HStack {
-                    Image(systemName: "magnifyingglass")
+            Image(systemName: "magnifyingglass")
+                .foregroundColor(.secondary)
+                .padding(.leading, 8)
+            
+            Button(action: {
+                showSearchBar.toggle()
+            }, label: {
+                HStack(content: {
+                    Text("Search for a location...")
                         .foregroundColor(.secondary)
-                        .padding(.leading, 8)
-
-                    ZStack(alignment: .leading) {
-                        if searchText.isEmpty {
-                            Text("Search for a location...")
-                                .foregroundColor(.secondary)
-                                .padding(.leading, 4)
-                        }
-                        TextField("", text: $searchText)
-                            .foregroundColor(.primary)
-                            .padding(.horizontal,4)
-                    }
-                }
-                .font(.subheadline)
-                .padding(8)
-                .background(Color("BgCard"))
-                .cornerRadius(8)
-                .padding()
-                .shadow(color: .black.opacity(0.2), radius: 2)
+                        .padding(.leading, 4)
+                    Spacer()
+                })
+            })
+        }
+        .font(.subheadline)
+        .padding(8)
+        .background(Color("BgCard"))
+        .cornerRadius(8)
+        .padding()
+        .shadow(color: .black.opacity(0.2), radius: 2)
     }
 }
 
