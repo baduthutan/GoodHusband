@@ -13,27 +13,27 @@ struct MainView: View {
     private let mapViewModel = MapViewModel.singleton
     
     var body: some View {
-        NavigationView(content: {
-            ScrollView{
-                ZStack{
-                    VStack(spacing: 10) {
-                        LocationHeaderView()
-                        if !favoritesManager.favorites.isEmpty {
-                                ForEach(favoritesManager.favorites) { favorite in
-                                    PinnedLocationView(favorite: favorite, location: favorite.name, isRainy: true, weatherModel: WeatherModel(date: Date(), conditionSymbolName: favorite.weatherCondition, temperature: Int(favorite.temperature), rainChance: favorite.rainChance, uvIndex: favorite.uvIndex, humidity: favorite.humidity))
-                                }
+        ScrollView {
+            ZStack {
+                VStack(spacing: 10) {
+                    LocationHeaderView()
+                    if !favoritesManager.favorites.isEmpty {
+                        ForEach(favoritesManager.favorites) { favorite in
+                            PinnedLocationView(favorite: favorite, location: favorite.name, isRainy: true, weatherModel: WeatherModel(date: Date(), conditionSymbolName: favorite.weatherCondition, temperature: Int(favorite.temperature), rainChance: favorite.rainChance, uvIndex: favorite.uvIndex, humidity: favorite.humidity))
                         }
-                        OverallForecastView()
-
-                        Spacer()
                     }
+                    OverallForecastView()
+                    Spacer()
+                }
+                VStack(content: {
                     MapView()
                         .padding(.top, 195)
-                }
+                    Spacer()
+                })
             }
-            .background(Color("BgPage"))
-            .ignoresSafeArea()
-        })
+        }
+        .background(Color("BgPage"))
+        .ignoresSafeArea()
     }
     
     private func removeFavorites(at offsets: IndexSet) {

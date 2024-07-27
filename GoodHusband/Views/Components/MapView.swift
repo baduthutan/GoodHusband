@@ -19,12 +19,12 @@ struct MapView: View {
     var body: some View {
         ZStack {
             VStack {
-                MapSearchOverlayView(showSearchBar: $showSearchBar)
-                Spacer()
+                NavigationLink(destination: {
+                    LocationSearchView(searchText: $mapViewModel.searchText, showSearchBar: $showSearchBar)
+                }, label: {
+                    MapSearchOverlayView(showSearchBar: $showSearchBar)
+                })
             }
-            .sheet(isPresented: $showSearchBar, content: {
-                LocationSearchView(searchText: $mapViewModel.searchText, showSearchBar: $showSearchBar)
-            })
         }
     }
 }
@@ -62,16 +62,11 @@ struct MapSearchOverlayView: View {
             Image(systemName: "magnifyingglass")
                 .foregroundColor(.secondary)
                 .padding(.leading, 8)
-            
-            Button(action: {
-                showSearchBar.toggle()
-            }, label: {
-                HStack(content: {
-                    Text("Search for a location...")
-                        .foregroundColor(.secondary)
-                        .padding(.leading, 4)
-                    Spacer()
-                })
+            HStack(content: {
+                Text("Search for a location...")
+                    .foregroundColor(.secondary)
+                    .padding(.leading, 4)
+                Spacer()
             })
         }
         .font(.subheadline)

@@ -12,32 +12,39 @@ struct LocationSearchView: View {
     @Binding var searchText: String
     @Binding var showSearchBar: Bool
     
-    @State var mapSelection: MKMapItem?
-    @State var isMapSelected: Bool = false
-    @State var showSearchResults = false
+    @State private var mapSelection: MKMapItem?
+    @State private var isMapSelected: Bool = false
+    @State private var showSearchResults = false
     
     @ObservedObject var mapViewModel = MapViewModel.singleton
     @ObservedObject var weatherViewModel = WeatherViewModel.singleton
+    
     var body: some View {
-        VStack(content: {
-            HStack(content: {
+        VStack {
+            HStack {
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(.secondary)
                     .padding(.leading, 8)
-                ZStack(alignment: .leading, content: {
+                ZStack(alignment: .leading) {
                     if searchText.isEmpty {
-                        HStack(content: {
+                        HStack {
                             Text("Search for a location...")
                                 .foregroundColor(.secondary)
                                 .padding(.leading, 4)
                             Spacer()
-                        })
+                        }
                     }
                     TextField("", text: $searchText)
                         .foregroundColor(.primary)
-                        .padding(.horizontal,4)
-                })
-            })
+                        .padding(.horizontal, 4)
+                        .onSubmit {
+                            Task {
+                                await mapViewModel.searchPlaces()
+                                showSearchResults = true
+                            }
+                        }
+                }
+            }
             .font(.subheadline)
             .padding(8)
             .background(Color("BgCard"))
@@ -47,55 +54,70 @@ struct LocationSearchView: View {
             
             if showSearchResults {
                 List(mapViewModel.results, id: \.self) { item in
-                    NavigationLink(destination: {
-                        if let mapSelection = mapSelection,
-                           let location = mapSelection.placemark.name,
-                           let administrativeArea = mapSelection.placemark.administrativeArea,
-                           let latitude = mapSelection.placemark.location?.coordinate.latitude,
-                           let longitude = mapSelection.placemark.location?.coordinate.longitude,
-                           let weatherModel = weatherViewModel.weatherModel {
-                            
-                            DetailView(
-                                location: location,
-                                address: "\(location), \(administrativeArea)",
-                                latitude: latitude,
-                                longitude: longitude,
-                                weatherModel: weatherModel
-                            )
+                    Button(action: {
+                        mapSelection = item
+                        showSearchResults = false
+                        showSearchBar = false
+                        isMapSelected = true
+                        weatherViewModel.fetchWeather()
+                    }) {
+                        VStack(alignment: .leading) {
+                            Text(item.placemark.name ?? "Unknown Place")
+                                .font(.headline)
+                            Text(item.placemark.title ?? "No address available")
+                                .font(.caption)
                         }
-                    }, label: {
-                        Button(action: {
-                            mapSelection = item
-                            showSearchResults = false
-                            isMapSelected = true
-                            showSearchBar.toggle()
-                            weatherViewModel.fetchWeather()
-                        }) {
-                            VStack(alignment: .leading) {
-                                Text(item.placemark.name ?? "Unknown Place")
-                                    .font(.headline)
-                                Text(item.placemark.title ?? "No address available")
-                                    .font(.caption)
-                            }
-                        }
-                    })
+                        .foregroundColor(.blue)
+                    }
                 }
+            } else {
+                Text("Please type places to search!")
+                    .foregroundColor(.gray)
             }
-            
             Spacer()
-        })
-        .onSubmit(of: .text) {
-            Task {
-                await mapViewModel.searchPlaces()
-                showSearchResults = true
-            }
         }
-        .onChange(of: mapSelection, { oldValue, newValue in
-            mapViewModel.showDetails = newValue != nil
-        })
+        .background(
+            NavigationLink(destination: DetailViewContainer(mapSelection: mapSelection), isActive: $isMapSelected) {
+                EmptyView()
+            }
+        )
+    }
+}
+
+
+struct DetailViewContainer: View {
+    var mapSelection: MKMapItem?
+    @ObservedObject var weatherViewModel = WeatherViewModel.singleton
+    
+    var body: some View {
+        if let mapSelection = mapSelection,
+           let location = mapSelection.placemark.name,
+           let administrativeArea = mapSelection.placemark.administrativeArea,
+           let latitude = mapSelection.placemark.location?.coordinate.latitude,
+           let longitude = mapSelection.placemark.location?.coordinate.longitude,
+           let weatherModel = weatherViewModel.weatherModel {
+            
+            DetailView(
+                location: location,
+                address: "\(location), \(administrativeArea)",
+                latitude: latitude,
+                longitude: longitude,
+                weatherModel: weatherModel
+            )
+        } else {
+            EmptyView()
+        }
     }
 }
 
 #Preview {
     ContentView()
 }
+
+//DetailView(
+//    location: mapSelection?.placemark.name ?? "Location Not Found",
+//    address: "\(mapSelection?.placemark.name ?? ""), \(mapSelection?.placemark.administrativeArea ?? "")",
+//    latitude: mapSelection?.placemark.location?.coordinate.latitude ?? 0,
+//    longitude: mapSelection?.placemark.location?.coordinate.longitude ?? 0,
+//    weatherModel: weatherViewModel.weatherModel!
+//)
