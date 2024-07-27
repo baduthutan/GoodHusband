@@ -43,6 +43,7 @@
 		D01772612C3FDAD900F077FE /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01772602C3FDAD900F077FE /* MapViewModel.swift */; };
 		D034BE502C471B9E003CBD88 /* HeaderWeatherDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D034BE4F2C471B9E003CBD88 /* HeaderWeatherDisplay.swift */; };
 		D034BE522C474D59003CBD88 /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D034BE512C474D59003CBD88 /* FavoritesManager.swift */; };
+		D03E12472C50A8280098C9D0 /* LocationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03E12462C50A8280098C9D0 /* LocationSearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +86,7 @@
 		D01772602C3FDAD900F077FE /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		D034BE4F2C471B9E003CBD88 /* HeaderWeatherDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderWeatherDisplay.swift; sourceTree = "<group>"; };
 		D034BE512C474D59003CBD88 /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
+		D03E12462C50A8280098C9D0 /* LocationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +208,7 @@
 				1A30D54E2C46609900059D5F /* TemperatureView.swift */,
 				1A30D54D2C46609900059D5F /* RecommendationView.swift */,
 				D017725E2C3FD28B00F077FE /* MapView.swift */,
+				D03E12462C50A8280098C9D0 /* LocationSearchView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				263D2A812C48107900BA8674 /* RecommendationViewModel.swift in Sources */,
 				263D2A792C47FB7600BA8674 /* WeatherModel.swift in Sources */,
 				263D2A752C47FA4800BA8674 /* DailyWeatherViewModel.swift in Sources */,
+				D03E12472C50A8280098C9D0 /* LocationSearchView.swift in Sources */,
 				263D2A712C479FF500BA8674 /* WeatherDataEnums.swift in Sources */,
 				2645E58D2C41103600540DC3 /* WeatherManager.swift in Sources */,
 				D034BE502C471B9E003CBD88 /* HeaderWeatherDisplay.swift in Sources */,

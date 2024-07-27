@@ -11,12 +11,14 @@ struct ContentView: View {
     @ObservedObject var weatherViewModel = WeatherViewModel.singleton
     
     var body: some View {
-        MainView()
-            .onAppear {
-                Task {
-                    weatherViewModel.fetchIsRainingNow()
+        NavigationView {
+            MainView()
+                .onAppear {
+                    Task {
+                        weatherViewModel.fetchIsRainingNow()
+                    }
                 }
-            }
+        }
     }
 }
 
