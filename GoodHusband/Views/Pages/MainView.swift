@@ -23,6 +23,7 @@ struct MainView: View {
                         }
                     }
                     OverallForecastView()
+                        .padding(.vertical, 16)
                     Spacer()
                 }
                 VStack(content: {

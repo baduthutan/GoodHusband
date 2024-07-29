@@ -9,6 +9,7 @@ import Foundation
 
 struct DayWeatherModel: Identifiable {
     var id = UUID()
+    var date: Date
     var day: String
     var symbol: String
     var temperature: Int

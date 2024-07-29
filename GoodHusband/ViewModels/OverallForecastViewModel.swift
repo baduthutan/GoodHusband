@@ -8,11 +8,16 @@
 import Foundation
 import CoreLocation
 
-class OverallForecastViewModel: ObservableObject {
+protocol DailyWeatherViewModelDelegate: AnyObject {
+    func didChangeActiveDay(to weather: DayWeatherModel)
+}
+
+class OverallForecastViewModel: ObservableObject, DailyWeatherViewModelDelegate {
     @Published var location = "Loading..."
     @Published var temperature = 0
     @Published var weatherImageName = ""
     @Published var recommendationModels: [RecommendationModel] = []
+    @Published var currentWeatherData: WeatherModel?
     
     private let weatherViewModel = WeatherViewModel.singleton
     private let locationManager = LocationManager()
@@ -20,8 +25,10 @@ class OverallForecastViewModel: ObservableObject {
     init() {
         weatherViewModel.fetchDailyForecast {
             self.getLocationName()
-            self.getTemperatureData()
-            self.getRecommendations()
+            if let firstWeatherData = self.weatherViewModel.weatherForecasts.first {
+                self.updateData(for: firstWeatherData)
+                self.currentWeatherData = firstWeatherData
+            }
         }
     }
     
@@ -62,22 +69,20 @@ class OverallForecastViewModel: ObservableObject {
         }
     }
     
-    private func getTemperatureData() {
-        let weatherData = self.weatherViewModel.weatherForecasts[0]
-        
+    private func updateData(for weatherData: WeatherModel) {
         self.temperature = weatherData.temperature
         self.weatherImageName = weatherData.conditionSymbolName
+        self.getRecommendations(for: weatherData)
     }
     
-    private func getRecommendations() {
-        let weatherData = self.weatherViewModel.weatherForecasts[0]
-        
+    private func getRecommendations(for weatherData: WeatherModel) {
+        recommendationModels.removeAll()
         appendTemperatureRecommendations(for: weatherData)
         appendUVIndexRecommendation(for: weatherData)
         appendRainChanceRecommendations(for: weatherData)
         appendHumidityRecommendations(for: weatherData)
     }
-
+    
     private func appendTemperatureRecommendations(for weatherData: WeatherModel) {
         if weatherData.temperature >= 30 {
             recommendationModels.append(contentsOf: [
@@ -154,4 +159,12 @@ class OverallForecastViewModel: ObservableObject {
             )
         }
     }
+    
+    // Conform to the DailyWeatherViewModelDelegate protocol
+    func didChangeActiveDay(to weather: DayWeatherModel) {
+        guard let weatherData = weatherViewModel.weatherForecasts.first(where: { Calendar.current.isDate($0.date, inSameDayAs: weather.date) }) else { return }
+        updateData(for: weatherData)
+        currentWeatherData = weatherData
+    }
 }
+

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct DestinationCardView: View {
+    @ObservedObject var overallForecastViewModel = OverallForecastViewModel()
+    
     var temperature: Int
     var rainChance: Int
     var uvIndex: Int
@@ -28,9 +30,9 @@ struct DestinationCardView: View {
                             .font(.system(size: 48))
                             .bold()
                     HStack {
-                        WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(imageName: .rainChance), background: .white.opacity(0.75), foreground: .black)
-                        WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(imageName: .uvIndex),background: .white.opacity(0.75), foreground: .black)
-                        WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(imageName: .humidity),background: .white.opacity(0.75), foreground: .black)
+                        WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(imageName: .rainChance, overallForecastViewModel: overallForecastViewModel), background: .white.opacity(0.75), foreground: .black)
+                        WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(imageName: .uvIndex, overallForecastViewModel: overallForecastViewModel),background: .white.opacity(0.75), foreground: .black)
+                        WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(imageName: .humidity, overallForecastViewModel: overallForecastViewModel),background: .white.opacity(0.75), foreground: .black)
                             Spacer()
                     }
                 }

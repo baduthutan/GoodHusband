@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DayWeatherView: View {
     @ObservedObject var dayWeatherViewModel: DayWeatherViewModel
+    @ObservedObject var dailyWeatherViewModel: DailyWeatherViewModel
     
     var body: some View {
         VStack(spacing: 8) {
@@ -26,7 +27,7 @@ struct DayWeatherView: View {
                     Rectangle()
                         .fill(.primary)
                         .frame(height: 2)
-                }else{
+                } else {
                     Rectangle()
                         .fill(Color("BgCard"))
                         .frame(height: 2)
@@ -37,18 +38,8 @@ struct DayWeatherView: View {
             }
         }
         .frame(width: 52, height: 86)
+        .onTapGesture {
+            dailyWeatherViewModel.setActiveDay(dayWeather: dayWeatherViewModel.dayWeather)
+        }
     }
-}
-
-#Preview {
-    DayWeatherView(
-        dayWeatherViewModel: DayWeatherViewModel(
-            dayWeather: DayWeatherModel(
-                day: "Today",
-                symbol: "sun.max.fill",
-                temperature: 29,
-                isActive: true
-            )
-        )
-    )
 }

@@ -42,13 +42,12 @@ struct DetailView: View {
     
     var body: some View {
         ScrollView {
-            /// LOCATION INFO SECTION
+            // LOCATION INFO SECTION
             HStack {
                 Image(systemName:"location")
                     .resizable()
                     .frame(width: 24, height: 24)
-                    .aspectRatio(
-                        contentMode: .fit)
+                    .aspectRatio(contentMode: .fit)
                 Text(location)
                     .font(.title2)
                     .padding(.leading, 8)
@@ -56,10 +55,10 @@ struct DetailView: View {
             }
             .padding(.bottom, 20)
             
-            /// DAILY WEATHER SECTION
+            // DAILY WEATHER SECTION
             DailyWeatherView().padding(.bottom, 22)
             
-            /// WEATHER INFO SECTION
+            // WEATHER INFO SECTION
             Text(weatherModel.conditionSymbolName)
                 .font(.largeTitle)
                 .bold()
@@ -67,13 +66,25 @@ struct DetailView: View {
             Text("weatherConditionDesc")
                 .padding(.bottom, 22)
             
-            /// WEATHER DETAIL SECTION
-            DestinationCardView(temperature: weatherModel.temperature, rainChance: weatherModel.rainChance, uvIndex: weatherModel.uvIndex, humidity: weatherModel.humidity, isPinned: isPinned)
-                .padding(.bottom, 22)
+            // WEATHER DETAIL SECTION
+            DestinationCardView(
+                temperature: weatherModel.temperature,
+                rainChance: weatherModel.rainChance,
+                uvIndex: weatherModel.uvIndex,
+                humidity: weatherModel.humidity,
+                isPinned: isPinned
+            )
+            .padding(.bottom, 22)
             
             /// RECOMMENDATION SECTION
             ForEach((1..<4)) { _ in
-                RecommendationView(recommendationViewModel: RecommendationViewModel( recommendation: RecommendationModel( imageName: "WarmClothes", title: "Don’t forget your sunscreen!", description: "The UV Index is currently high. Use sunscreen and re-apply every 4 hours.")))
+                RecommendationView(recommendationViewModel: RecommendationViewModel(
+                    recommendation: RecommendationModel(
+                        imageName: "WarmClothes",
+                        title: "Don’t forget your sunscreen!",
+                        description: "The UV Index is currently high. Use sunscreen and re-apply every 4 hours."
+                    )
+                ))
             }
             
             /// BUTTON SECTION

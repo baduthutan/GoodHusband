@@ -10,6 +10,7 @@ import SwiftUI
 struct OverallForecastView: View {
     
     @ObservedObject var overallForecastViewModel = OverallForecastViewModel()
+    @StateObject var dailyWeatherViewModel = DailyWeatherViewModel()
     
     var body: some View {
         VStack{
@@ -20,9 +21,11 @@ struct OverallForecastView: View {
                     Text("overall forecast in \(overallForecastViewModel.location)")
                         .font(.system(size: 11))
                         .textCase(.uppercase)
+                        .lineLimit(2)
+                        .truncationMode(.tail)
                     Spacer()
                 }
-                DailyWeatherView()
+                DailyWeatherView(dailyWeatherViewModel: dailyWeatherViewModel)
                 HStack{
                     TemperatureView(temperatureViewModel: TemperatureViewModel(
                             weatherImageName: overallForecastViewModel.weatherImageName, temperature: overallForecastViewModel.temperature
@@ -31,9 +34,9 @@ struct OverallForecastView: View {
                     .previewLayout(.sizeThatFits)
                     Spacer()
                     HStack {
-                        WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(imageName: .rainChance), background: Color("BGCardSecondary"), foreground:Color("ForegroundColor"))
-                        WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(imageName: .uvIndex), background: Color("BGCardSecondary"), foreground:Color("ForegroundColor"))
-                        WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(imageName: .humidity), background: Color("BGCardSecondary"), foreground:Color("ForegroundColor"))
+                        WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(imageName: .rainChance, overallForecastViewModel: overallForecastViewModel), background: Color("BGCardSecondary"), foreground: Color("ForegroundColor"))
+                        WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(imageName: .uvIndex, overallForecastViewModel: overallForecastViewModel), background: Color("BGCardSecondary"), foreground: Color("ForegroundColor"))
+                        WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(imageName: .humidity, overallForecastViewModel: overallForecastViewModel), background: Color("BGCardSecondary"), foreground: Color("ForegroundColor"))
                     }
                 }
                 ForEach(overallForecastViewModel.recommendationModels) { recommendation in
@@ -47,8 +50,12 @@ struct OverallForecastView: View {
         .cornerRadius(10)
         .padding(.horizontal)
         .shadow(color: .black.opacity(0.2), radius: 2)
+        .onAppear {
+            dailyWeatherViewModel.delegate = overallForecastViewModel
+        }
     }
 }
+
 #Preview {
     OverallForecastView()
 }

@@ -28,13 +28,13 @@ struct WeatherDetailView: View {
     }
 }
 
-struct WeatherDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        HStack {
-            WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(imageName: .rainChance), background: Color("BGCardSecondary"), foreground: .black)
-            WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(imageName: .uvIndex), background: Color("BGCardSecondary"), foreground: .black)
-            WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(imageName: .humidity), background: Color("BGCardSecondary"), foreground: .black)
-        }
-        .previewLayout(.sizeThatFits)
-    }
-}
+//struct WeatherDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HStack {
+//            WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(imageName: .rainChance, overallForecastViewModel: overallForecastViewModel), background: Color("BGCardSecondary"), foreground: .black)
+//            WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(imageName: .uvIndex), background: Color("BGCardSecondary"), foreground: .black)
+//            WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(imageName: .humidity), background: Color("BGCardSecondary"), foreground: .black)
+//        }
+//        .previewLayout(.sizeThatFits)
+//    }
+//}

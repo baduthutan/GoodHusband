@@ -9,6 +9,7 @@ import Foundation
 
 class DailyWeatherViewModel: ObservableObject {
     @Published var dailyForecasts: [DayWeatherModel] = []
+    weak var delegate: DailyWeatherViewModelDelegate?
     
     private var weatherViewModel = WeatherViewModel.singleton
     
@@ -28,6 +29,7 @@ class DailyWeatherViewModel: ObservableObject {
             let day = isToday ? "Today" : convertDateToDay(date: weather.date)
             
             let dayWeather = DayWeatherModel(
+                date: weather.date,
                 day: day,
                 symbol: weather.conditionSymbolName,
                 temperature: weather.temperature,
@@ -45,5 +47,14 @@ class DailyWeatherViewModel: ObservableObject {
         let dayFormat = formatter.string(from: date)
         
         return dayFormat
+    }
+    
+    func setActiveDay(dayWeather: DayWeatherModel) {
+        dailyForecasts = dailyForecasts.map { day in
+            var updatedDay = day
+            updatedDay.isActive = (day.id == dayWeather.id)
+            return updatedDay
+        }
+        delegate?.didChangeActiveDay(to: dayWeather)
     }
 }

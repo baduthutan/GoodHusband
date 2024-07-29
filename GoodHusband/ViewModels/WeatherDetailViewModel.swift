@@ -6,29 +6,36 @@
 //
 
 import Foundation
+import Combine
 
 class WeatherDetailViewModel: ObservableObject {
     let imageName: WeatherDataEnums
     @Published var value: Int
     
-    private var weatherViewModel = WeatherViewModel.singleton
+    private var overallForecastViewModel: OverallForecastViewModel
     
-    init(imageName: WeatherDataEnums) {
+    init(imageName: WeatherDataEnums, overallForecastViewModel: OverallForecastViewModel) {
         self.imageName = imageName
         self.value = 0
-
-        weatherViewModel.fetchDailyForecast {
-            self.fetchWeatherDetailValue()
-        }
+        self.overallForecastViewModel = overallForecastViewModel
+        
+        self.overallForecastViewModel.$currentWeatherData.sink { [weak self] weatherData in
+            self?.fetchWeatherDetailValue(for: weatherData)
+        }.store(in: &cancellables)
+        
+        fetchWeatherDetailValue(for: overallForecastViewModel.currentWeatherData)
     }
     
-    func fetchWeatherDetailValue() {
-        let weatherData = weatherViewModel.weatherForecasts[0]
+    private var cancellables = Set<AnyCancellable>()
+    
+    func fetchWeatherDetailValue(for weatherData: WeatherModel?) {
+        guard let weatherData = weatherData else { return }
+        
         switch imageName {
         case .rainChance:
             self.value = weatherData.rainChance
         case .uvIndex:
-            self.value =  weatherData.uvIndex
+            self.value = weatherData.uvIndex
         case .humidity:
             self.value = weatherData.humidity
         }

@@ -14,10 +14,12 @@ struct DailyWeatherView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 0) {
                 ForEach(dailyWeatherViewModel.dailyForecasts) { dayWeather in
-                    DayWeatherView(dayWeatherViewModel: DayWeatherViewModel(dayWeather: dayWeather))
+                    DayWeatherView(
+                        dayWeatherViewModel: DayWeatherViewModel(dayWeather: dayWeather),
+                        dailyWeatherViewModel: dailyWeatherViewModel
+                    )
                 }
             }
         }
     }
 }
-
